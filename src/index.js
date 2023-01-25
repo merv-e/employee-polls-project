@@ -5,15 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import App from './components/App';
 import { createStore } from 'redux';
 import reducer from "../src/reducers"
+import { Provider } from 'react-redux';
+import middleware from "./middleware"
 
-
-const store = createStore(reducer);
+const store = createStore(reducer, middleware); //when middleware is at the beginning, we get an error, why?
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
