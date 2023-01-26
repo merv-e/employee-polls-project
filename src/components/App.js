@@ -11,9 +11,17 @@ const App = (props) => {
 
   return (
     <div>
-      <Home />
+    {
+      props.load === true 
+      ? null        //TODO: will be changed to the Login view
+      : <Home/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
+    }
     </div>
   )
-}
+};
+
+const mapStateToProps = ({authedUser}) => ({ //TODO : it will be connected to the App later for subscriptions //state updates
+  load : authedUser === null      
+})
 
 export default connect()(App)
