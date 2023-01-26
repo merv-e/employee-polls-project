@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import {handleData} from '../actions/shared';
+import Home from "./Home";
  
 const App = (props) => {
 
@@ -10,7 +11,7 @@ const App = (props) => {
 
   return (
     <div>
-      HELLO!
+      <Home />
     </div>
   )
 }
