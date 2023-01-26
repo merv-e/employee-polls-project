@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
+import Poll from "./Poll";
 
 const Home = (props) => {
-    console.log(props);
+    // console.log(props);
   return (
     <div>
-        Home
+        <Poll  /> {/* id={id} */}
     </div>
   )
 };
