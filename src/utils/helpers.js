@@ -1,26 +1,30 @@
-function calculatePercentage(numberOfVotesPerOption, total ) {
-    if (numberOfVotesPerOption !== 0 && total !==0) {
-        return  (100 * numberOfVotesPerOption)/total;
-    }
-    return ""; // return 0 or "" or null?
-};
+// function calculatePercentage(numberOfVotesPerOption, total ) {
+//     if (numberOfVotesPerOption !== 0 && total !==0) {
+//         return  (100 * numberOfVotesPerOption)/total;
+//     }
+//     return ""; // return 0 or "" or null?
+// };
 
+function getDate(timestamp) {
+  return new Date(timestamp).toLocaleString();
+};
 
 export function formattedQuestion (question, users, authedUser) {
   
   const { id, optionOne, optionTwo, timestamp, author } = question;
 
   const {  avatarURL } = author; //is this really needed here ?
-
+  
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
   const totalNumOfVotes  = optionOne.votes + optionTwo.votes;
-
+  
   const text1 = optionOne.text
   const text2 = optionTwo.text;
 
   const numOfVotesForOptionOne = votesForOptionOne.length;
   const numOfVotesForOptionTwo = votesForOptionTwo.length;
+  
   return {
     id,
     author,
@@ -30,7 +34,7 @@ export function formattedQuestion (question, users, authedUser) {
     text2,
     numOfVotesForOptionTwo,
     votesForOptionTwo,
-    timestamp,
+    timestamp : getDate(timestamp),
     /* TODO : calculate percentage later. */
     // percentageForOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
     // percentageForOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
