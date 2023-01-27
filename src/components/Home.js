@@ -2,10 +2,11 @@ import { connect } from "react-redux";
 import Polls from "./Polls";
 
 const Home = (props) => {
-  // console.log(props);
+  // console.log(props.authedUser);  undefined.
+
   return (
     <div>
-      <h2 className="center">Polls</h2>
+      <h2 className="center">New Polls</h2>  
       <ul className="container">
       {
         props.questionIds.map(qid => (
@@ -15,6 +16,7 @@ const Home = (props) => {
         ))
       }
       </ul>
+      <h2 className="center">Completed Polls</h2>
     </div>
   )
 };
