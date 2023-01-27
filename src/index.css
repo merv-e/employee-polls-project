@@ -19,3 +19,26 @@ code {
 ul {
   list-style-type: none;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* background-color: #2196F3; */
+  /* padding: 10px; */
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin: 2rem;
+}
+
+.poll-list{
+  border: 1px solid #C6CAED;
+  border-radius: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn {
+  border-radius: 10px;
+  background-color: #ADA8BE ;
+  border: 1px solid black;
+}

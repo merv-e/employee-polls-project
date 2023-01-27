@@ -14,7 +14,9 @@ export function formattedQuestion (question, users, authedUser) {
   const { id, optionOne, optionTwo, timestamp, author } = question;
 
   const {  avatarURL } = author; //is this really needed here ?
-  
+
+  const {name} = users;
+   
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
   const totalNumOfVotes  = optionOne.votes + optionTwo.votes;
@@ -27,6 +29,7 @@ export function formattedQuestion (question, users, authedUser) {
   
   return {
     id,
+    name,
     author,
     text1,
     votesForOptionOne,

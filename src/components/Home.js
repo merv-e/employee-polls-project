@@ -1,30 +1,20 @@
 import { connect } from "react-redux";
 import Polls from "./Polls";
-import Table from 'react-bootstrap/Table';
 
 const Home = (props) => {
   // console.log(props);
   return (
     <div>
-    {/* WHY DOES REACT-BOOTSTRAP NOT WORK?   */}
-        <h2 className="center">Polls</h2>
-        <Table>
-          {/*  responsive="m"
-            striped="columns"  */}
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Date Added</th>
-              <th>Poll</th>
-            </tr>
-          </thead>
-            {
-              props.questionIds.map(qid => (
-                  <Polls id={qid} /> 
-              ))
-            }
-      </Table>
-      {/* NOTE : maybe list should be added above and Polls component must be wrapped?  */}
+      <h2 className="center">Polls</h2>
+      <ul className="container">
+      {
+        props.questionIds.map(qid => (
+          <li className="poll-list" key={qid}>
+            <Polls id={qid} /> 
+          </li>
+        ))
+      }
+      </ul>
     </div>
   )
 };

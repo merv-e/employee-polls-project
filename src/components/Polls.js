@@ -9,17 +9,17 @@ const Polls = (props) => {
         //TODO :  when clicked it'll take us to the poll itself. 
     };
 
-    return (
-      <>
-        <tbody>
-          <tr>
-            <td>{props.question.author} </td>
-            <td>{props.question.timestamp}</td>
-            <td onClick={showPoll}>Show poll</td>
-          </tr>
-        </tbody>
-        </>
-  )
+
+  return (
+    <div>
+      <div>
+        <p>{props.question.author} </p>
+        <span>{props.question.name} </span>
+        <p>{props.question.timestamp}</p>
+      <button className="btn" onClick={showPoll}>Show poll</button>
+      </div> 
+    </div>
+    )
 };
 
 const mapStateToProps = ({authedUser, users, questions}, {id}) => { //we can use {id} instead of prop.
