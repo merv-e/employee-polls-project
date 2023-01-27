@@ -1,24 +1,40 @@
-// function calculatePercentage(numberOfVotesPerOption, totalNumofVotes ) {
-//     if (numberOfVotesPerOption !== 0 && totalNumofVotes !==0) {
-//         return  (100 * numberOfVotesPerOption)/totalNumofVotes;
-//     }
-//     return 0;
-// };
+function calculatePercentage(numberOfVotesPerOption, total ) {
+    if (numberOfVotesPerOption !== 0 && total !==0) {
+        return  (100 * numberOfVotesPerOption)/total;
+    }
+    return ""; // return 0 or "" or null?
+};
 
 
-export function formattedQuestion (question, author, authedUser) {
-  const { id, votes, text, timestamp } = question
+export function formattedQuestion (question, users, authedUser) {
+  
+  const { id, optionOne, optionTwo, timestamp, author } = question;
 
-  const { name, avatarURL } = author
+  const {  avatarURL } = author; //is this really needed here ?
 
+  const votesForOptionOne = optionOne.votes;
+  const votesForOptionTwo = optionTwo.votes;
+  const totalNumOfVotes  = optionOne.votes + optionTwo.votes;
+
+  const text1 = optionOne.text
+  const text2 = optionTwo.text;
+
+  const numOfVotesForOptionOne = votesForOptionOne.length;
+  const numOfVotesForOptionTwo = votesForOptionTwo.length;
   return {
     id,
-    name,
-    text,
+    author,
+    text1,
+    votesForOptionOne,
+    numOfVotesForOptionOne,
+    text2,
+    numOfVotesForOptionTwo,
+    votesForOptionTwo,
     timestamp,
-    votes: votes.length,
-    // percentage: calculatePercentage(),
-    hasUserAnswered : votes.includes(authedUser),
+    /* TODO : calculate percentage later. */
+    // percentageForOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
+    // percentageForOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
+    // hasUserVoted: votes.includes(authedUser),
     avatar: avatarURL,  //TODO : find avatars for users.
     }
   }

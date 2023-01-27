@@ -1,11 +1,20 @@
 import { connect } from "react-redux";
-import Poll from "./Poll";
+import Polls from "./Polls";
 
 const Home = (props) => {
     // console.log(props);
   return (
     <div>
-        <Poll  /> {/* id={id} */}
+        <h2 className="center">Polls</h2>
+        <ul>
+          {
+            props.questionIds.map(qid => (
+              <li key={qid}>
+                <Polls id={qid} /> 
+              </li>
+            ))
+          }
+      </ul>
     </div>
   )
 };
