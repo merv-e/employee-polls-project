@@ -20,8 +20,9 @@ const App = (props) => {
   )
 };
 
-const mapStateToProps = ({authedUser}) => ({ //TODO : it will be connected to the App later for subscriptions //state updates
+const mapStateToProps = ({authedUser}, {users, questions}) => ({ 
   load : authedUser === null      
 })
 
-export default connect()(App)
+export default connect(mapStateToProps)(App)
+
