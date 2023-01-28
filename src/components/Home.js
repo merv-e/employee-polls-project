@@ -3,37 +3,44 @@ import Polls from "./Polls";
 
 const Home = (props) => {
   // console.log(props.authedUser);  undefined.
+  console.log(props.answeredQuestionIds);
+  console.log(props.questionIds);
 
-    // h2 will be either new or completed. 
-
-    // {/* {
-    //   props.hasUserVoted && ( */}
-    // )}
+  const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
+  const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
     
   return (
     <div>
-      <h2 className="center">New Polls</h2>  
+    <h2 className="center">New Polls</h2>
       <ul className="container">
       {
-        props.questionIds.map(qIdUnanswered => 
-        (
-          <li className="poll-list" key={qIdUnanswered}>
-            <Polls id={qIdUnanswered} /> 
+       hasUserVoted.map(qIdAnswered => 
+          <li className="poll-list" key={qIdAnswered}>
+            <Polls id={qIdAnswered}/>
           </li>
-        ))
-      }
-      </ul>
-    {/* <h2 className="center">Completed Polls</h2> */}
+      )}
+      </ul>  
+
+      <h2 className="center">Completed Polls</h2>
+        <ul className="container">
+        {
+        hasUserNotVoted.map(qIdAnswered => 
+            <li className="poll-list" key={qIdAnswered}>
+              <Polls id={qIdAnswered}/>
+            </li>
+      )},
+      </ul>  
     </div>
   )
 };
 
-const mapStateToProps = ({questions, authedUser}) => ({
+
+const mapStateToProps = ({questions, authedUser, users}) => ({
     questionIds : Object.keys(questions)
-     .sort((x, y) => 
+      .sort((x, y) => 
         questions[y].timestamp - questions[x].timestamp
      ),
-    // hasUserVoted: !questions.id.optionOne.votes.includes(authedUser) || !questions.id.optionTwo.votes.includes(authedUser) //meaning the user hasn't voted.
+     answeredQuestionIds: Object.keys(users[authedUser].answers),
      
 });
 
