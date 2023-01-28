@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
 
 const Polls = (props) => {
-    // console.log(props);
-    // console.log(props.authedUser); // whereas in here we can see the authed user. 
 
     const showPoll = () => {
         //TODO :  when clicked it'll take us to the poll itself. 
