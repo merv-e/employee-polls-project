@@ -20,7 +20,7 @@ const App = (props) => {
   )
 };
 
-const mapStateToProps = ({authedUser}, {users, questions}) => ({ 
+const mapStateToProps = ({authedUser, users, questions} ) => ({ 
   load : authedUser === null      
 })
 
