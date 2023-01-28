@@ -35,19 +35,10 @@ const mapStateToProps = ({questions, authedUser}) => ({
      ),
     // hasUserVoted: !questions.id.optionOne.votes.includes(authedUser) || !questions.id.optionTwo.votes.includes(authedUser) //meaning the user hasn't voted.
      
-    //TODO : timestamps are not defined yet. Maybe create a helper file, like in the Udacity course?
 });
 
 export default connect(mapStateToProps)(Home)
 
 
 
-
-    //   {/* {
-    //   !props.questions.id.optionOne.votes.includes(props.authedUser) || !props.questions.id.optionTwo.votes.includes(props.authedUser) 
-    //   ? 
-    //   <h2 className="center">New Polls</h2>
-    //   :
-    //   <h2 className="center">Completed Polls</h2>
-    // } */}
     
