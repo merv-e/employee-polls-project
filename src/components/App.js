@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import {handleData} from '../actions/shared';
 import Home from "./Home";
+import Poll from "./Poll";
  
 const App = (props) => {
 
@@ -14,7 +15,7 @@ const App = (props) => {
     {
       props.load === true 
       ? null        //TODO: will be changed to the Login view
-      : <Home/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
+      : <Poll/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
     }
     </div>
   )

@@ -42,3 +42,16 @@ ul {
   background-color: #ADA8BE ;
   border: 1px solid black;
 }
+
+.poll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 30px;
+}
+
+.options {
+  display: flex;
+
+}
