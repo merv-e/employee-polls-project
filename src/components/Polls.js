@@ -23,7 +23,7 @@ const Polls = (props) => {
           onClick={(ev) => showPoll(ev)}>
           Show poll
         </button>
-        <Poll/>
+        <Poll author={props.author}/>
     </div>
     )
 };

@@ -13,6 +13,7 @@ const Poll = (props) => {
   return (
     <div className="poll">
         <h1>A Poll by {props.author}</h1>
+        { console.log(props.author) }
         <img src={props.avatar} alt={`Avatar of ${props.author}`} className="avatar"/>
         <h2>Would you rather</h2>
         <div className="options">
