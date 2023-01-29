@@ -1,17 +1,20 @@
+import { connect } from "react-redux";
+import {setAuthedUser} from "../actions/authedUser";
+import { useState } from "react";
+import { handleLogin } from "../actions/authedUser";
 
 
-const Login = (props) => {
+const Login = ({dispatch}) => {
 
-    const handleLogin = event => {
-        event.preventDefault();
-        // navigate if username and password matches
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-        // props.users.id = 
-    }
-
-    const handleClick = (e) => {
-        // e.target.value 
-    }
+  const handleLogginIn = (ev) => {
+    ev.preventDefault();
+    dispatch(handleLogin(userName, password));
+    setPassword("");
+    setUserName("");
+  };
 
   return (
     <div className="login-page">
@@ -19,13 +22,22 @@ const Login = (props) => {
        src="../public/images/employee-poll.png" alt="Apicture showing employees"/>
       <form 
        className="login" 
-       onSubmit={handleLogin} >
-        <input placeholder="username" type="text"/>
-        <input placeholder="password" type="text"/>
-        <button type="submit" onClick={handleClick}>Login</button>
+       onSubmit={handleLogginIn} >
+        <input 
+         placeholder="username" type="text"
+         onChange={(event) => setUserName(event.target.value)}/>
+       <input 
+        placeholder="password" 
+        type="text"
+        onChange={(event) => setPassword(event.target.value)}/>
+        <button type="submit">Login</button>
       </form>
     </div>
   )
-  }
+};
 
-export default Login
+  // const mapStateToProps = ({authedUser}) => ({
+  //   succesfullyLoggedIn : !authedUser,
+  // });
+
+export default connect()(Login)

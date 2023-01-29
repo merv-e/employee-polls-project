@@ -16,8 +16,8 @@ const App = (props) => {
     <LoadingBar/>
     {
       props.load === true 
-      ? null        //TODO: will be changed to the Login view
-      : <Login/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
+      ? <Login/>       
+      : <Home/>   
     }
     </div>
   )

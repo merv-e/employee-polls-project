@@ -12,8 +12,8 @@ const Poll = (props) => {
 //  NOTE: this is the structure for an unanswered poll
   return (
     <div className="poll">
+        {/* { console.log(props.author) } */}
         <h1>A Poll by {props.author}</h1>
-        { console.log(props.author) }
         <img src={props.avatar} alt={`Avatar of ${props.author}`} className="avatar"/>
         <h2>Would you rather</h2>
         <div className="options">
