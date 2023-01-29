@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import {handleData} from '../actions/shared';
 import Home from "./Home";
 import LoadingBar  from "react-redux-loading-bar";
+import Login from "./Login";
  
 const App = (props) => {
 
@@ -16,7 +17,7 @@ const App = (props) => {
     {
       props.load === true 
       ? null        //TODO: will be changed to the Login view
-      : <Home/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
+      : <Login/>   // NOTE: If there is no authenticated user, Home Component won't be shown.
     }
     </div>
   )

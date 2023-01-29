@@ -16,6 +16,21 @@ code {
   text-align: center;
 }
 
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  padding: 50px;
+  margin: 100px;
+  gap: 30px;
+}
+
 ul {
   list-style-type: none;
 }
