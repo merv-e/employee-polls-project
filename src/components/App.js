@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import {handleData} from '../actions/shared';
 import Home from "./Home";
-
+import LoadingBar  from "react-redux-loading-bar";
  
 const App = (props) => {
 
@@ -12,6 +12,7 @@ const App = (props) => {
 
   return (
     <div>
+    <LoadingBar/>
     {
       props.load === true 
       ? null        //TODO: will be changed to the Login view
