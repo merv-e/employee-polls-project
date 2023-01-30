@@ -20,20 +20,23 @@ const App = (props) => {
   // const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div>
-    {/* <Fragment> */}
-      {/* <div> */}
-
+    <Fragment>
       <LoadingBar/>
-      {/* <Nav/> */}
-
-      {props.load === true 
-        ?  <Login/> 
-        : <Home />  
-      }
-      
-
-    </div>
+      <div className="home-page">
+        <Nav/> 
+        {
+          props.load === true 
+            ? null         
+            : (
+              <Routes> 
+                <Route path="/" exact element={<Home />} />
+                <Route path="/new" element={<NewPoll />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+              </Routes>
+            )
+        }
+      </div>
+     </Fragment> 
   )
 };
 
@@ -43,3 +46,19 @@ const mapStateToProps = ({authedUser, users, questions} ) => ({
 
 export default connect(mapStateToProps)(App)
 
+
+// {/* <Route path="/question/:id" element={<Poll />} /> */}
+
+      // {/* {props.load === true 
+      //   ?  <Login/> 
+      //   : <Home />  
+      // } */}
+      
+      //       {/* <Route path="/login" exact 
+      //        element=
+      //        {
+      //         !loggedIn 
+      //         ? <Login/> 
+      //         : <Navigate replace to={<Home/>} /> 
+      //       } 
+      //       /> */}

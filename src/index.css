@@ -13,8 +13,27 @@ code {
 }
 
 .navbar {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+  text-decoration: none;
+}
+
+.navbar li {
+  text-shadow: #ADA8BE;
+  font-weight: 500;
+}
+
+.navbar ul {
+  /* border-radius: ; */
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
+  gap: 20px;
+}
+
+li {
+  list-style-type: none;
 }
 .center {
   text-align: center;
@@ -37,6 +56,7 @@ code {
 
 ul {
   list-style-type: none;
+  padding-left: 0px;
 }
 
 .container {
@@ -47,6 +67,11 @@ ul {
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 2rem;
+}
+
+.home-page {
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .poll-list{

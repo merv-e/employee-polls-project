@@ -6,14 +6,17 @@ import App from './components/App';
 import { createStore } from 'redux';
 import reducer from "../src/reducers"
 import { Provider } from 'react-redux';
-import middleware from "./middleware"
+import middleware from "./middleware";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const store = createStore(reducer, middleware); //when middleware is at the beginning, we get an error, why?
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>
 );
 
