@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+}
 .center {
   text-align: center;
 }

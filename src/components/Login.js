@@ -1,17 +1,16 @@
 import { connect } from "react-redux";
-import {setAuthedUser} from "../actions/authedUser";
 import { useState } from "react";
-import { handleLogin } from "../actions/authedUser";
+// import { handleLogin } from "../actions/authedUser";
 
 
-const Login = ({dispatch}) => {
+const Login = ({dispatch, authedUser}) => {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogginIn = (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(handleLogin(userName, password));
+    // handleLogin(userName, password);
     setPassword("");
     setUserName("");
   };
@@ -22,7 +21,7 @@ const Login = ({dispatch}) => {
        src="../public/images/employee-poll.png" alt="Apicture showing employees"/>
       <form 
        className="login" 
-       onSubmit={handleLogginIn} >
+       onSubmit={handleSubmit} >
         <input 
          placeholder="username" type="text"
          onChange={(event) => setUserName(event.target.value)}/>
@@ -36,8 +35,8 @@ const Login = ({dispatch}) => {
   )
 };
 
-  // const mapStateToProps = ({authedUser}) => ({
-  //   succesfullyLoggedIn : !authedUser,
-  // });
+  const mapStateToProps = ({authedUser}) => ({
+    loggedIn : authedUser,
+  });
 
 export default connect()(Login)

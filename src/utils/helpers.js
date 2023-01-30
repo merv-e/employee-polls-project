@@ -45,3 +45,21 @@ export function formattedQuestion (question, users, authedUser) {
     avatar: avatarURL,  //TODO : find avatars for users.
     }
   }
+
+  // export function _authentification ({ id, users, password, name }) {
+  //   return new Promise((res, rej) => {
+  //     setTimeout(() => {
+  //       users = {
+  //         ...users,
+  //         [id]: {
+  //           ...users[id],
+  //           name: hasLiked === true
+  //             ? users[id].name.filter((userName) => userName !== e.target.value)
+  //             : users[id].likes.concat([authedUser])
+  //         }
+  //       }
+  
+  //       res()
+  //     }, 500)
+  //   })
+  // }

@@ -1,22 +1,22 @@
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 
-export function setAuthedUser(authedUser) {
+export function setAuthedUser(id) {
     return {
         type: SET_AUTHED_USER,
-        authedUser, 
+        id, 
     }
 }
 
-export function handleLogin(userName, password) {
-    return (dispatch, getState) => {
+// export function handleLogin(userName, password) {
+//     return (dispatch, getState) => {
 
-        const {users} = getState();
+//         const {users} = getState();
 
-        const userLogin = Object.values(users).includes(u => u.id === userName && u.password === password)
+//         const userLogin = Object.values(users).includes(u => u.id === userName && u.password === password)
         
-        if (userLogin) {
-            return dispatch(setAuthedUser(userLogin))
-        }
-    }
-};
+//         if (userLogin) {
+//             return dispatch(setAuthedUser(userLogin))
+//         }
+//     }
+// };
 

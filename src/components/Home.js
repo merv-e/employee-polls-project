@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import Polls from "./Polls";
 
 const Home = (props) => {
-  // console.log(props.answeredQuestionIds);
-  // console.log(props.questionIds);
+  console.log(props.answeredQuestionIds);
+  console.log(props.questionIds);
 
   const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));

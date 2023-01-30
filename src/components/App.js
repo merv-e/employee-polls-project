@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import { useEffect, Fragment } from "react";
+import { useEffect, Fragment, useState } from "react";
 import {handleData} from '../actions/shared';
 import LoadingBar  from "react-redux-loading-bar";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Leaderboard from "./Leaderboard";
@@ -17,23 +17,22 @@ const App = (props) => {
       props.dispatch(handleData());
   }, []);
 
+  // const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div>
-    <Fragment>
-    <LoadingBar/>
-    <Nav/>
-    <Routes>
-    {
-      props.load === true 
-      ? <Route path="/login" element={<Login/>} />       
-      : <Route path="/login" exact element={<Home/>} />
-    }
-      <Route path="/question/:id" element={<Poll />} />
-      <Route path="/new" element={<NewPoll />} />
-      <Route path="/leaderboard" element={<Leaderboard />} />
-      </Routes>
+    {/* <Fragment> */}
+      {/* <div> */}
 
-    </Fragment>
+      <LoadingBar/>
+      {/* <Nav/> */}
+
+      {props.load === true 
+        ?  <Login/> 
+        : <Home />  
+      }
+      
+
     </div>
   )
 };
