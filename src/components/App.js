@@ -8,6 +8,7 @@ import Login from "./Login";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
 import Poll from "./Poll";
+import Nav from "./Nav"
 
  
 const App = (props) => {
@@ -19,8 +20,8 @@ const App = (props) => {
   return (
     <div>
     <Fragment>
-
     <LoadingBar/>
+    <Nav/>
     <Routes>
     {
       props.load === true 
