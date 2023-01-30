@@ -1,9 +1,14 @@
 import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, Fragment } from "react";
 import {handleData} from '../actions/shared';
-import Home from "./Home";
 import LoadingBar  from "react-redux-loading-bar";
+import {Routes, Route} from "react-router-dom";
+import Home from "./Home";
 import Login from "./Login";
+import Leaderboard from "./Leaderboard";
+import NewPoll from "./NewPoll";
+import Poll from "./Poll";
+
  
 const App = (props) => {
 
@@ -13,12 +18,21 @@ const App = (props) => {
 
   return (
     <div>
+    <Fragment>
+
     <LoadingBar/>
+    <Routes>
     {
       props.load === true 
-      ? <Login/>       
-      : <Home/>   
+      ? <Route path="/login" element={<Login/>} />       
+      : <Route path="/login" exact element={<Home/>} />
     }
+      <Route path="/question/:id" element={<Poll />} />
+      <Route path="/new" element={<NewPoll />} />
+      <Route path="/leaderboard" element={<Leaderboard />} />
+      </Routes>
+
+    </Fragment>
     </div>
   )
 };
