@@ -32,6 +32,7 @@ const App = (props) => {
                 <Route path="/" exact element={<Home />} />
                 <Route path="/new" element={<NewPoll />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/question/:id" element={<Poll />} />
               </Routes>
             )
         }
@@ -40,14 +41,13 @@ const App = (props) => {
   )
 };
 
-const mapStateToProps = ({authedUser, users, questions} ) => ({ 
+const mapStateToProps = ({authedUser} ) => ({ 
   load : authedUser === null      
 })
 
 export default connect(mapStateToProps)(App)
 
 
-// {/* <Route path="/question/:id" element={<Poll />} /> */}
 
       // {/* {props.load === true 
       //   ?  <Login/> 

@@ -1,45 +1,73 @@
 import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
-// import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import Poll from "./Poll";
 
+
 const Polls = (props) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const showPoll = (ev, id) => {
-        //TODO :  when clicked it'll take us to the poll itself. 
-            // e.preventDefault();
-            // navigate(`/question/${id}`)    
-        };
+    // when clicked it'll take us to the poll itself. 
+    const showPoll = ({ id }) => {
+        navigate(`/question/${props.id}`);    
+        // return <Poll 
+        //  id={id}
+        // />
+
+    };
     
-
+    const {author, name, timestamp } = props.question;
+    
   return (
     <div>
-        <p>{props.question.author} </p>
-        <span>{props.question.name} </span>
-        <p>{props.question.timestamp}</p>
+        <p>{author} </p>
+        <span>{name} </span>
+        <p>{timestamp}</p>
         <button 
           className="btn" 
-          onClick={(ev) => showPoll(ev)}>
+          onClick={showPoll}
+        >
           Show poll
         </button>
-        <Poll author={props.author}/>
+
+        {/* conditional rendering based on the click event */}
+        {/* <Poll 
+         id={props.id}
+         question={props.question}
+         optionOne={props.optionOne}
+         optionTwo={props.optionTwo}
+         author={props.author}
+        /> */}
+{/* {
+  showPoll && (<Poll 
+         author={author}
+         optionOne={props.optionOne}
+         optionTwo={props.optionTwo}
+         name={name}
+        />)
+} */}
+        
     </div>
     )
 };
 
-const mapStateToProps = ({authedUser, users, questions}, {id, name, avatar, author, optionOne, optionTwo, answeredQuestionIds}) => { //we can use {id} instead of prop.
+const mapStateToProps = ({authedUser, users, questions}, {id}) => { //we can use {id} instead of prop.
 
-    const question = questions[id]; 
+    const question = questions[id];
+    
+    // const {username} = users[question.author];  
+    //o kisinin username degerlerine karsilik geliyor bu' : o da id : username seklinde verilmis. 
+
+    //Dahası users[id].name etc ile id,name, password ce avatarUrL'lerine ulasabiliyorsun
 
     return {
-        authedUser,
+        id,
         question: formattedQuestion(question, users[question.author], authedUser),
-        avatar : users.avatarURL,
-        name : users.name,
-        author : question.author,
+        author : users[question.author],
         optionOne : question.optionOne.text,
         optionTwo : question.optionTwo.text,
+        // avatar : users[username].avatarURL,
+        // name : Object.keys(users).filter((uName)=> users[username].name === uName)
     }
 };
 
