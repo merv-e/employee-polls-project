@@ -7,6 +7,7 @@ const Home = (props) => {
   const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
  
+  
   return (
     <div>
     <h2 className="center">New Polls</h2>

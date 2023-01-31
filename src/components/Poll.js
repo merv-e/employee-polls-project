@@ -28,7 +28,6 @@ const Poll = (props) => {
           <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
           <p>{text2}</p>
           <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
-         
         </div>
     </div>
     /* div yerine Link mi olmasi gerek?  */

@@ -8,35 +8,42 @@ import { useState } from "react";
 const Polls = (props) => {
   
   const navigate = useNavigate();
-  // const [isClicked, setIsClicked]= useState(false);
+  
+  const [isClicked, setIsClicked]= useState(false);
 
     // when clicked it'll take us to the poll itself. 
-    const showPoll = ({ id }) => {
-        navigate(`/question/${props.id}`); 
-        // setIsClicked(true)
-        // return redirect(`/question/${props.id}`);    
-    };
+  const showPoll = ({ id }) => {
+      setIsClicked(true)
+      navigate(`/question/${props.id}`); 
+      // return redirect(`/question/${props.id}`);    
+  };
     
-    const {author, name, timestamp } = props.question;
+  const {author, name, timestamp, avatar, text1, text2 } = props.question;
     
   return (
-    <div>
-        <p>{author} </p>
+    <>
+    {/* {
+      !isClicked 
+      ? ( */}
+      <div>
+        <p>{author}</p>
         <span>{name} </span>
         <p>{timestamp}</p>
         <button 
           className="btn" 
-          onClick={  showPoll 
-          // : 
-          //   !isClicked ? (<Poll 
-          // id={props.id}
-          // author={author}
-          // />) 
-          }
+          onClick={showPoll}
         >
           Show poll
         </button>
     </div>
+    {/* )
+    : ( */}
+       {/* <Poll 
+        id={props.id}
+       />
+      ) 
+    } */}
+  </>
     )
 };
 
