@@ -1,9 +1,20 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate, useLocation, useParams } from "react-router-dom"; 
 import { formattedQuestion } from "../utils/helpers";
 
-const Poll = (props) => {
 
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
+
+const Poll = (props) => {
   const navigate = useNavigate();
   
   const chooseOption = (e) => {
@@ -34,17 +45,20 @@ const Poll = (props) => {
   )
 };
 
-const mapStateToProps = ({authedUser, questions, users }, {id}) => {
+const mapStateToProps = ({authedUser, questions, users }, props) => {
+
+  const { id } = props.router.params;
   const question = questions[id];
 
   return {
+    id,
     questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
   }
   
 };
 
 
-export default connect(mapStateToProps)(Poll)
+export default withRouter(connect(mapStateToProps)(Poll))
 
 //  {/* if the user has voted then show the votes :  */}
           // {

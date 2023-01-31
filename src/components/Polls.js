@@ -1,24 +1,19 @@
 import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
-import {useNavigate, redirect} from "react-router-dom";
-import Poll from "./Poll"
-import { useState } from "react";
-
+import {Link, useNavigate} from "react-router-dom";
 
 const Polls = (props) => {
   
   const navigate = useNavigate();
-  
-  const [isClicked, setIsClicked]= useState(false);
 
     // when clicked it'll take us to the poll itself. 
-  const showPoll = ({ id }) => {
-      setIsClicked(true)
-      navigate(`/question/${props.id}`); 
+  const showPoll = (e, id ) => {
+     e.preventDefault();
+      navigate(); 
       // return redirect(`/question/${props.id}`);    
   };
     
-  const {author, name, timestamp, avatar, text1, text2 } = props.question;
+  const {author, name, timestamp} = props.question;
     
   return (
     <>
@@ -29,12 +24,12 @@ const Polls = (props) => {
         <p>{author}</p>
         <span>{name} </span>
         <p>{timestamp}</p>
-        <button 
+        <Link to={`/question/${props.id}`}
           className="btn" 
-          onClick={showPoll}
+          // onClick={(e, id) => showPoll(e, id)}
         >
           Show poll
-        </button>
+        </Link>
     </div>
     {/* )
     : ( */}
@@ -49,9 +44,9 @@ const Polls = (props) => {
 
 const mapStateToProps = ({authedUser, users, questions}, prop) => { //we can use {id} instead of prop.
 
+  
     const question = questions[prop.id];
     return {
-        id: prop.id,
         question: formattedQuestion(question, users[question.author], authedUser),
     }
 };
