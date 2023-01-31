@@ -49,7 +49,7 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
   const question = questions[id];
 
   return {
-    id,
+    // id,
     questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
   }
   
