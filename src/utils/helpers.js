@@ -63,3 +63,18 @@ export function formattedQuestion (question, users, authedUser) {
   //     }, 500)
   //   })
   // }
+
+  // export function getUserData(users, uid) {
+  //   const user = users[uid];
+  //   const {name, answers, avatarUrl, id, questions} = user;
+
+  //   //NOTE : answers and questions are objects.
+  //   return {
+  //     avatarUrl :user.avatarURL,
+  //     id: user.id,
+  //     name: user.name,
+  //     // questions
+  //     //answers
+  //   }
+
+  // };

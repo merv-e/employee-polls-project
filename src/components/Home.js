@@ -9,15 +9,20 @@ const Home = (props) => {
   const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
     
+  // console.log(props.hasuserVoted);
   return (
     <div>
     <h2 className="center">New Polls</h2>
       <ul className="container">
       {
-       hasUserVoted.map(qIdAnswered => 
-          <li className="poll-list" key={qIdAnswered}>
-            <Polls id={qIdAnswered}/>
-            {/* <Poll id={qIdAnswered}/> */}
+       hasUserVoted.map(qId => 
+          <li className="poll-list" key={qId}>
+           <Polls 
+             id={qId} 
+            />
+            <Poll 
+             id={qId} 
+            />
           </li>
       )}
       </ul>  
@@ -25,11 +30,16 @@ const Home = (props) => {
     <h2 className="center">Completed Polls</h2>
       <ul className="container">
       {
-        hasUserNotVoted.map(qIdAnswered => 
-            <li className="poll-list" key={qIdAnswered}>
-              <Polls id={qIdAnswered}/>
-              {/* <Poll id={qIdAnswered}/> */}
-            </li>
+        hasUserNotVoted.map(qId => 
+          <li className="poll-list" key={qId}>
+            <Polls 
+             id={qId} 
+              />
+             
+            <Poll 
+             id={qId} 
+             />
+          </li>
       )}
       </ul>  
     </div>

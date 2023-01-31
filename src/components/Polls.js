@@ -1,19 +1,14 @@
 import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
-import {useNavigate, Link} from "react-router-dom";
-import Poll from "./Poll";
-
+import {useNavigate} from "react-router-dom";
 
 const Polls = (props) => {
-    const navigate = useNavigate();
+  
+  const navigate = useNavigate();
 
     // when clicked it'll take us to the poll itself. 
     const showPoll = ({ id }) => {
         navigate(`/question/${props.id}`);    
-        // return <Poll 
-        //  id={id}
-        // />
-
     };
     
     const {author, name, timestamp } = props.question;
@@ -29,24 +24,6 @@ const Polls = (props) => {
         >
           Show poll
         </button>
-
-        {/* conditional rendering based on the click event */}
-        {/* <Poll 
-         id={props.id}
-         question={props.question}
-         optionOne={props.optionOne}
-         optionTwo={props.optionTwo}
-         author={props.author}
-        /> */}
-{/* {
-  showPoll && (<Poll 
-         author={author}
-         optionOne={props.optionOne}
-         optionTwo={props.optionTwo}
-         name={name}
-        />)
-} */}
-        
     </div>
     )
 };
@@ -66,8 +43,6 @@ const mapStateToProps = ({authedUser, users, questions}, {id}) => { //we can use
         author : users[question.author],
         optionOne : question.optionOne.text,
         optionTwo : question.optionTwo.text,
-        // avatar : users[username].avatarURL,
-        // name : Object.keys(users).filter((uName)=> users[username].name === uName)
     }
 };
 
