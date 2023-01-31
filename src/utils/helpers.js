@@ -13,9 +13,7 @@ export function formattedQuestion (question, users, authedUser) {
   
   const { id, optionOne, optionTwo, timestamp, author } = question;
 
-  const {  avatarURL } = author; //is this really needed here ?
-
-  const {name} = users;
+  const {name, avatarURL} = users;
    
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
@@ -38,11 +36,11 @@ export function formattedQuestion (question, users, authedUser) {
     numOfVotesForOptionTwo,
     votesForOptionTwo,
     timestamp : getDate(timestamp),
+    avatar: avatarURL,  //TODO : find avatars for users.
     /* TODO : calculate percentage later. */
     // percentageForOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
     // percentageForOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
     // hasUserVoted: votes.includes(authedUser),
-    avatar: avatarURL,  //TODO : find avatars for users.
     }
   }
 

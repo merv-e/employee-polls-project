@@ -3,13 +3,10 @@ import Polls from "./Polls";
 import Poll from "./Poll";
 
 const Home = (props) => {
-  // console.log(props.answeredQuestionIds);
-  // console.log(props.questionIds);
 
   const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
-    
-  // console.log(props.hasuserVoted);
+ 
   return (
     <div>
     <h2 className="center">New Polls</h2>
