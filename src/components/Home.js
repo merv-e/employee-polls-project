@@ -17,9 +17,9 @@ const Home = (props) => {
            <Polls 
              id={qId} 
             />
-            <Poll 
+            {/* <Poll 
              id={qId} 
-            />
+            /> */}
           </li>
       )}
       </ul>  
@@ -33,9 +33,9 @@ const Home = (props) => {
              id={qId} 
               />
              
-            <Poll 
+            {/* <Poll 
              id={qId} 
-             />
+             /> */}
           </li>
       )}
       </ul>  

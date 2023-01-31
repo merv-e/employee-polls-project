@@ -36,7 +36,7 @@ export function formattedQuestion (question, users, authedUser) {
     numOfVotesForOptionTwo,
     votesForOptionTwo,
     timestamp : getDate(timestamp),
-    avatar: avatarURL,  //TODO : find avatars for users.
+    avatar: avatarURL,  
     /* TODO : calculate percentage later. */
     // percentageForOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
     // percentageForOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
