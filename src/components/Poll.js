@@ -26,7 +26,6 @@ const Poll = (props) => {
   }
 
   const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
-  // console.log(author);
 
   return (
     <div className="poll">
@@ -41,7 +40,6 @@ const Poll = (props) => {
           <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
         </div>
     </div>
-    /* div yerine Link mi olmasi gerek?  */
   )
 };
 
@@ -56,7 +54,6 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
   }
   
 };
-
 
 export default withRouter(connect(mapStateToProps)(Poll))
 

@@ -17,8 +17,6 @@ const App = (props) => {
       props.dispatch(handleData());
   }, []);
 
-  // const [loggedIn, setLoggedIn] = useState(false);
-
   return (
     <Fragment>
       <LoadingBar/>

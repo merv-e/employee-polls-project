@@ -1,12 +1,9 @@
 import { connect } from "react-redux";
 import Polls from "./Polls";
-import Poll from "./Poll";
 
 const Home = (props) => {
-
   const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
- 
   
   return (
     <div>
@@ -18,9 +15,6 @@ const Home = (props) => {
            <Polls 
              id={qId} 
             />
-            {/* <Poll 
-             id={qId} 
-            /> */}
           </li>
       )}
       </ul>  
@@ -33,10 +27,6 @@ const Home = (props) => {
             <Polls 
              id={qId} 
               />
-             
-            {/* <Poll 
-             id={qId} 
-             /> */}
           </li>
       )}
       </ul>  
