@@ -30,14 +30,18 @@ const Poll = (props) => {
   return (
     <div className="poll">
         <h1>A Poll by {author}</h1>
-        <span> Name : {name}</span>
+        <span><i>{name}</i></span>
         <img src={avatar} alt={`Avatar of ${author}`} className="avatar"/>
         <h2>Would you rather</h2>
         <div className="options">
-          <p>{text1}</p>
-          <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
-          <p>{text2}</p>
-          <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
+          <div className="option">
+            <p>{text1}</p>
+            <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
+          </div>
+          <div className="option">
+            <p>{text2}</p>
+            <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
+          </div>
         </div>
     </div>
   )

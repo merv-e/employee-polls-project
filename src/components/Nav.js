@@ -5,7 +5,6 @@ const Nav = () => {
     const style = {
         textDecoration: 'none',
         color: "black",
-        border: "1px solid grey",
     }
 
   return (

@@ -25,7 +25,6 @@ code {
 }
 
 .navbar ul {
-  /* border-radius: ; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -74,6 +73,17 @@ ul {
     padding: 20px;
 }
 
+.poll {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  padding: 20px;
+  margin: 30px;
+  gap: 20px;
+  border: 1px solid #ADA8BE;
+  border-radius: 50px;
+}
+
 .poll-list{
   border: 1px solid #C6CAED;
   border-radius: 30px;
@@ -82,22 +92,19 @@ ul {
 }
 
 .btn {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #ADA8BE ;
   border: 1px solid black;
 }
 
-.poll {
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  padding: 20px;
-  margin: 30px;
-  gap: 20px;
-}
-
 .options {
   display: flex;
+  gap: 30px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
 }
 
 .leaderboard-table {
@@ -107,4 +114,17 @@ ul {
   padding: 20px;
   margin: 30px;
   gap: 30px;  
+}
+
+/* .avatar {
+  size: 
+} */
+
+.form-poll {
+  display: flex;
+  flex-direction: column;
+  align-items:stretch;
+  /* padding: 20px; */
+  /* margin: 30px; */
+    gap: 30px;  
 }
