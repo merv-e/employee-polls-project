@@ -14,19 +14,17 @@ export function receiveQuestions(questions) {
  function addQuestion(question) {
     return {
         type: ADD_QUESTION,
-        question
+        question,
     }
 };
 
-export function handleAddQuestion(text) {
+export function handleAddQuestion(question) {
     return(dispatch, getState) => {
         const {authedUser} = getState();
         dispatch(showLoading());
         
         return saveQuestion({
-            text,
-            author: authedUser,
-            //is there anything else necessary?
+            question,
         }).then((question)=> dispatch(addQuestion(question)))
         .then(()=> dispatch(hideLoading()));
     }
