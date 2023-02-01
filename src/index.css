@@ -12,28 +12,20 @@ code {
     monospace;
 }
 
-.navbar {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start; */
-  text-decoration: none;
-}
-
-.navbar li {
-  text-shadow: #ADA8BE;
-  font-weight: 500;
-}
-
 .navbar ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   gap: 20px;
+}
+
+.navbar li {
+  font-weight: 500;
 }
 
 li {
   list-style-type: none;
 }
+
 .center {
   text-align: center;
 }
@@ -61,8 +53,6 @@ ul {
 .container {
   display: grid;
   grid-template-columns: auto auto auto;
-  /* background-color: #2196F3; */
-  /* padding: 10px; */
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 2rem;
@@ -91,11 +81,12 @@ ul {
   text-align: center;
 }
 
-.btn {
+/* since bootstrap is installed this is not working now  */
+/* .btn {
   border-radius: 5px;
   background-color: #ADA8BE ;
   border: 1px solid black;
-}
+} */
 
 .options {
   display: flex;

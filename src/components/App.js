@@ -20,8 +20,8 @@ const App = (props) => {
   return (
     <Fragment>
       <LoadingBar/>
+      <Nav/> 
       <div className="home-page">
-        <Nav/> 
         {
           props.load === true 
             ? null //Navigate("/login")         

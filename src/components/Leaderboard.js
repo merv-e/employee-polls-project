@@ -40,7 +40,7 @@ const mapStateToProps = ({users}) => {
     }))
     .sort((a, b) => b.sum - a.sum);
   
-    console.log(userInfo)
+    // console.log(userInfo)
   return {
     userInfo,
   };

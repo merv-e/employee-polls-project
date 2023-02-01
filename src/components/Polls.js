@@ -18,11 +18,11 @@ const Polls = (props) => {
         <p>{author}</p>
         <span>{name} </span>
         <p>{timestamp}</p>
-        <div
-          className="btn" 
+        <button
+          className="btn btn-secondary" 
           onClick={(e, id) => showPoll(e, id)}>
           Show poll
-        </div>
+        </button>
     </div>
     )
 };
