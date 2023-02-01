@@ -8,6 +8,7 @@ import reducer from "../src/reducers"
 import { Provider } from 'react-redux';
 import middleware from "./middleware";
 import { BrowserRouter as Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(reducer, middleware); //when middleware is at the beginning, we get an error, why?
 

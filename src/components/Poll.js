@@ -1,18 +1,6 @@
 import { connect } from "react-redux";
 import { useNavigate, useLocation, useParams } from "react-router-dom"; 
-import { formattedQuestion } from "../utils/helpers";
-
-
-const withRouter = (Component) => {
-  const ComponentWithRouterProp = (props) => {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return <Component {...props} router={{ location, navigate, params }} />;
-  };
-
-  return ComponentWithRouterProp;
-};
+import { formattedQuestion, withRouter } from "../utils/helpers";
 
 const Poll = (props) => {
   const navigate = useNavigate();

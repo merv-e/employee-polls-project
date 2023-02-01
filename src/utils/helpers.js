@@ -1,19 +1,32 @@
-// function calculatePercentage(numberOfVotesPerOption, total ) {
-//     if (numberOfVotesPerOption !== 0 && total !==0) {
-//         return  (100 * numberOfVotesPerOption)/total;
-//     }
-//     return ""; // return 0 or "" or null?
-// };
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
+
+function calculatePercentage(numberOfVotesPerOption, total ) {
+    if (numberOfVotesPerOption !== 0 && total !==0) {
+        return  (100 * numberOfVotesPerOption)/total;
+    }
+    return ""; // return 0 or "" or null?
+};
 
 function getDate(timestamp) {
   return new Date(timestamp).toLocaleString();
 };
 
-export function formattedQuestion (question, users, authedUser) {
+export function withRouter (Component) {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
+
+export function formattedQuestion (question, user, authedUser) {
   
   const { id, optionOne, optionTwo, timestamp, author } = question;
 
-  const {name, avatarURL} = users;
+  const {name, avatarURL} = user;
    
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
@@ -30,16 +43,18 @@ export function formattedQuestion (question, users, authedUser) {
     name,
     author,
     text1,
-    votesForOptionOne,
-    numOfVotesForOptionOne,
     text2,
-    numOfVotesForOptionTwo,
-    votesForOptionTwo,
     timestamp : getDate(timestamp),
-    avatar: avatarURL,  
+    avatar: avatarURL,
+    votesForOptionOne,
+    votesForOptionTwo,
+
+    numOfVotesForOptionOne,
+    numOfVotesForOptionTwo,
+    percentageOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
+    percentageOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
+
     /* TODO : calculate percentage later. */
-    // percentageForOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
-    // percentageForOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
     // hasUserVoted: votes.includes(authedUser),
     }
   }
@@ -61,18 +76,3 @@ export function formattedQuestion (question, users, authedUser) {
   //     }, 500)
   //   })
   // }
-
-  // export function getUserData(users, uid) {
-  //   const user = users[uid];
-  //   const {name, answers, avatarUrl, id, questions} = user;
-
-  //   //NOTE : answers and questions are objects.
-  //   return {
-  //     avatarUrl :user.avatarURL,
-  //     id: user.id,
-  //     name: user.name,
-  //     // questions
-  //     //answers
-  //   }
-
-  // };

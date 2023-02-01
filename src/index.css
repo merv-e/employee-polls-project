@@ -110,10 +110,12 @@ ul {
 .leaderboard-table {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  /* align-items:center; */
+  justify-content: space-between;
   padding: 20px;
   margin: 30px;
   gap: 30px;  
+  overflow-x:auto;
 }
 
 /* .avatar {

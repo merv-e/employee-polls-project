@@ -3,7 +3,7 @@ let users = {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: "https://github.com/merv-e/employee-polls-project/blob/master/public/images/avatar_1.jpg",
+    avatarURL: "../public/images/avatar_1.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
