@@ -16,7 +16,7 @@ const Polls = (props) => {
   return (
       <div>
         <p>{author}</p>
-        <span>{name} </span>
+        {/* <span>{name} </span> */}
         <p>{timestamp}</p>
         <button
           className="btn btn-secondary" 
