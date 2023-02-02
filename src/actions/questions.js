@@ -1,10 +1,10 @@
 import {saveQuestion, saveQuestionAnswer} from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import {addQuestionAuthor} from './users';
+import {addQuestionAuthor, addAnswerOfAuthenticatedUser} from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
-export const SAVE_ANSWER = 'SAVE_ANSWER';
+export const SAVE_ANSWER_TO_QUESTION = 'SAVE_ANSWER_TO_QUESTION';
 
 export function receiveQuestions(questions) {
     return {
@@ -34,20 +34,12 @@ export function handleAddQuestion(optionOneText, optionTwoText, author) {
         }
 }
 
-// function saveAnswer (answer) {
-//     return {
-//         type: SAVE_ANSWER,
-//         answer
-//     }
-// }
+export function saveAnswerToQuestion (authedUser, qid, answer) {
+    return {
+        type: SAVE_ANSWER_TO_QUESTION,
+        authedUser,
+        qid,
+        answer,
+    }
+};
 
-// export function handleSaveAnswer( qid, answer){
-//     return (dispatch, getState) => {
-//         const {authedUser} = getState();
-//         // dispatch(showLoading);
-//         return saveQuestionAnswer({
-//             authedUser,
-
-//         })
-// }
-// };

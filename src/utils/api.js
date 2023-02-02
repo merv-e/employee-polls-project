@@ -15,11 +15,11 @@ import {
         questions
     }))
   }
-
-  export function saveQuestion(info) {
-    return _saveQuestion(info)
+  
+  export function saveQuestion (optionOneText, optionTwoText, author) {
+    return _saveQuestion({optionOneText, optionTwoText, author})
   }
-
-  export function saveQuestionAnswer (info) {
-    return _saveQuestionAnswer(info)
-  }
+  
+    export function saveQuestionAnswer(authedUser, qid, answer) {
+      return _saveQuestionAnswer({authedUser, qid, answer})
+    }

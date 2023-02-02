@@ -26,7 +26,7 @@ const NewPoll = ({dispatch , authedUser}) => {
     const handleSubmit = (e) => {  
       e.preventDefault();
       // dispatch(showLoading());
-      dispatch(handleAddQuestion(firstOption, secondOption, authedUser))
+      // dispatch(handleAddQuestion(firstOption, secondOption, authedUser))
       // navigate("/");
       console.log("First Option: ", firstOption);
       console.log("Second Option: ", secondOption);

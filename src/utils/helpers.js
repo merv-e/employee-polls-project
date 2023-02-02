@@ -26,7 +26,7 @@ export function formattedQuestion (question, user, authedUser) {
   
   const { id, optionOne, optionTwo, timestamp, author } = question;
 
-  const {name, avatarURL} = user;
+  const {name, avatarURL, answers} = user;
    
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
@@ -53,6 +53,9 @@ export function formattedQuestion (question, user, authedUser) {
     numOfVotesForOptionTwo,
     percentageOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
     percentageOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
+    
+    answersOfUser : user.answers,
+    questionsOfUser : user.questions, 
 
     /* TODO : calculate percentage later. */
     // hasUserVoted: votes.includes(authedUser),

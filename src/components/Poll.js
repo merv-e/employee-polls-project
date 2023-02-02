@@ -1,16 +1,40 @@
 import { connect } from "react-redux";
-import { useNavigate, useLocation, useParams } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom"; 
+import handleSaveAnswer from "../actions/users";
 import { formattedQuestion, withRouter } from "../utils/helpers";
 
-const Poll = (props) => {
+const Poll = (props) => { 
   const navigate = useNavigate();
+
+  const {dispatch, authedUser} = props;
+  // console.log(props.id);
+  // console.log(props.questionAndUserInfo.id);
   
-  const chooseOption = (e) => {
-     e.preventDefault();
+  const chooseOptionOne = () => { 
+    //  e.preventDefault();
+    // const {dispatch, authedUser, id} = props;
+    dispatch(handleSaveAnswer({
+        authedUser, 
+        id: props.questionAndUserInfo.id, 
+        answer: "optionOne", 
+    }))
    // TODOS:
    //also add it to database so that this poll will be shown in the completed polls ---async redux thunk will be used.
+  //  dispatch()
+   navigate("/")
+  };
+  
+  
+  const chooseOptionTwo = () => { //
+    //  e.preventDefault();
+    dispatch(handleSaveAnswer(
+      {
+        authedUser, 
+        id: props.questionAndUserInfo.id,
+        answer: "optionTwo", 
+    }))
 
-  //  navigate("/")
+   navigate("/")
   }
 
   const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
@@ -24,11 +48,11 @@ const Poll = (props) => {
         <div className="options">
           <div className="option">
             <p>{text1}</p>
-            <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
+            <button className="btn" onClick={chooseOptionOne}>Choose</button>
           </div>
           <div className="option">
             <p>{text2}</p>
-            <button className="btn" onClick={(e) => chooseOption(e)}>Choose</button>
+            <button className="btn" onClick={chooseOptionTwo}>Choose</button>
           </div>
         </div>
     </div>
@@ -41,8 +65,9 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
   const question = questions[id];
 
   return {
-    // id,
+    id,
     questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
+    authedUser,
   }
   
 };
