@@ -148,7 +148,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author, //bu degisik!
     optionOne: {
       votes: [],
       text: optionOneText,
@@ -165,6 +165,7 @@ export function _saveQuestion (question) {
     if (!question.optionOneText || !question.optionTwoText || !question.author) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
+    // const authedUser = question.author;
 
     const formattedQuestion = formatQuestion(question)
     setTimeout(() => {

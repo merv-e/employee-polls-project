@@ -1,34 +1,38 @@
 // import {saveQuestion} from "../utils/api";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { showLoading } from "react-redux-loading-bar";
+import { Navigate, useNavigate } from "react-router-dom";
+import {handleAddQuestion} from '../actions/questions'
 
-const NewPoll = (props) => {
+const NewPoll = ({dispatch , authedUser}) => {
 
     const [firstOption, setFirstOption] = useState("");
     const [secondOption, setSecondOption] = useState("");
-
-    const handleChangeFirstOp = (ev) => {
-      const text1 = ev.target.value;
-      setFirstOption(text1);
-      // dispatch()
-    };
     
-    const handleChangSecOp = (ev) => {
-      const text2 = ev.target.value;
-      setSecondOption(text2)
-      // dispatch()
-    };
+    const navigate = useNavigate();
+
+    // const handleChange = (ev) => {
+      // const text1 = ev.target.value;
+      // setFirstOption(text1);
+    // };
+    
+    // const handleChangSecOp = (ev) => {
+    //   const text2 = ev.target.value;
+    //   setSecondOption(text2)
+    //   // dispatch()
+    // };
     
     const handleSubmit = (e) => {  
       e.preventDefault();
-      setFirstOption("");
-      setSecondOption("");
+      // dispatch(showLoading());
+      dispatch(handleAddQuestion(firstOption, secondOption, authedUser))
+      // navigate("/");
       console.log("First Option: ", firstOption);
       console.log("Second Option: ", secondOption);
+      // setFirstOption("");
+      // setSecondOption("");
 
-      // TODO : 
-      // 1- send it to the store => 
-      // 2- redirect to homepg
-      // dispatchEvent(handle)    
     };
 
   return (
@@ -37,10 +41,10 @@ const NewPoll = (props) => {
         <form className="form-poll" onSubmit={(e) => handleSubmit(e)}>
           <input 
            value={firstOption}
-           onChange={(e) => handleChangeFirstOp(e)}placeholder="First Option"/>
+           onChange={(ev) => setFirstOption(ev.target.value)}placeholder="First Option"/>
           <input 
            value={secondOption}
-           onChange={(e) => handleChangSecOp(e)} 
+           onChange={(ev) => setSecondOption(ev.target.value)} 
            placeholder="Second Option"/>
           <button
            type="submit" 
@@ -56,4 +60,4 @@ const NewPoll = (props) => {
   )
 }
 
-export default NewPoll
+export default connect()(NewPoll)

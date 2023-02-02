@@ -6,12 +6,12 @@ export default function questions( state={}, action) {
             return {
                 ...state,
                 ...action.questions
-            };   
+            };      
         case ADD_QUESTION:
-            const {question} = action;
             return {
-                [action.question.id] : action.question,
-            };    
+                  ...state,
+                  [action.question.id]: action.question,
+            };
         default:
             return state;
     }
