@@ -4,40 +4,37 @@ import handleSaveAnswer from "../actions/users";
 import { formattedQuestion, withRouter } from "../utils/helpers";
 
 const Poll = (props) => { 
-  const navigate = useNavigate();
 
-  const {dispatch, authedUser} = props;
+  const navigate = useNavigate();
+  const {dispatch, authedUser, id, question} = props;
+  const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
+
   // console.log(props.id);
+  // console.log(props.question.id);
   // console.log(props.questionAndUserInfo.id);
+  // console.log(authedUser);
   
-  const chooseOptionOne = () => { 
-    //  e.preventDefault();
-    // const {dispatch, authedUser, id} = props;
-    dispatch(handleSaveAnswer({
-        authedUser, 
-        id: props.questionAndUserInfo.id, 
+  const chooseOptionOne = (e) => { 
+     e.preventDefault();
+     dispatch(handleSaveAnswer({
+        authedUser : author, 
+        id: question.id, 
         answer: "optionOne", 
-    }))
-   // TODOS:
-   //also add it to database so that this poll will be shown in the completed polls ---async redux thunk will be used.
-  //  dispatch()
-   navigate("/")
+     }))
+     navigate("/")
   };
   
-  
-  const chooseOptionTwo = () => { //
-    //  e.preventDefault();
+  const chooseOptionTwo = (e) => { //
+     e.preventDefault();
     dispatch(handleSaveAnswer(
       {
         authedUser, 
-        id: props.questionAndUserInfo.id,
+        qid: question.id,
         answer: "optionTwo", 
     }))
 
    navigate("/")
   }
-
-  const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
 
   return (
     <div className="poll">
@@ -68,6 +65,7 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
     id,
     questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
     authedUser,
+    question
   }
   
 };

@@ -1,6 +1,6 @@
 import {
     RECEIVE_USERS, 
-    ADD_QUESTION_AUTHOR, 
+    // ADD_QUESTION_AUTHOR, 
     SAVE_ANSWER_TO_USER
     // ADD_ANSWER_AUTHOR
 } from "../actions/users";
@@ -16,16 +16,14 @@ export default function users(state={}, action) {
         case SAVE_ANSWER_TO_USER:
             return {
                 ...state,
-                [action.authUser]: {
-                  ...state[action.authUser],
+                [action.authedUser]: {
+                  ...state[action.authedUser],
                   answers: {
-                    ...state[action.authUser].answers,
+                    ...state[action.authedUser].answers,
                     [action.id]: action.answer
                   }
                 }
             };      
-            
-            
         default:
             return state;
     }
