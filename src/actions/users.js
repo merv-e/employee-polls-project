@@ -13,14 +13,6 @@ export function receiveUsers(users) {
   }
 };
 
-// export function addQuestionAuthor({author, questionId}) {
-//     return {
-//       type: SAVE_ANSWER_TO_USER,
-//       questionId,
-//       author,
-//     }
-// };
-
 export function addAnswerOfAuthenticatedUser({authedUser, answer, qid }) {
   //suan icin qid'yi id olarak degistirirsek, undefined oluyor!
     return {

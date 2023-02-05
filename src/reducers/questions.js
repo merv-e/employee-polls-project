@@ -13,11 +13,11 @@ export default function questions( state={}, action) {
             // authedUser'ı degisik bir bicimde atamamız lazım 
             return {
                 ...state,
-                [action.id]: {
-                    ...state[action.id],
+                [action.qid]: {
+                    ...state[action.qid],
                     [action.answer]: {
-                        ...state[action.id][action.answer],
-                        votes: state[action.id][action.answer].votes.concat([action.authedUser])
+                        ...state[action.qid][action.answer],
+                        votes: state[action.qid][action.answer].votes.concat([action.authedUser])
                     }
                 }
             };
@@ -25,7 +25,7 @@ export default function questions( state={}, action) {
         case ADD_QUESTION:
             return {
                   ...state,
-                  [action.question.id]: action.question,
+                  [action.question.qid]: action.question,
             };
         default:
             return state;

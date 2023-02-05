@@ -16,9 +16,9 @@ const Poll = (props) => {
   const chooseOptionOne = (e) => { 
      e.preventDefault();
      dispatch(handleSaveAnswer({
-        // authedUser, 
+        authedUser, 
         qid :id, 
-        answer : {qid :"optionOne"},
+        answer:"optionOne" //: {qid :"optionOne"},
         // : {authedUser : "optionOne"},
         // votes :  
      }))
@@ -29,9 +29,9 @@ const Poll = (props) => {
      e.preventDefault();
     dispatch(handleSaveAnswer(
       {
-        // authedUser, 
+        authedUser, 
         qid :id,  //qid: question.id
-        answer: {qid : "optionTwo"}, 
+        answer: "optionTwo" , // :{qid : "optionTwo"}, 
     }))
 
    navigate("/")
