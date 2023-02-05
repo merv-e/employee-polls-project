@@ -10,7 +10,7 @@ const Poll = (props) => {
   const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
 
   const chooseOptionOne = (e) => { 
-     e.preventDefault();
+    //  e.preventDefault();
      dispatch(handleSaveAnswer({
       authedUser, 
       qid :id, 
@@ -20,7 +20,7 @@ const Poll = (props) => {
   };
   
   const chooseOptionTwo = (e) => {
-     e.preventDefault();
+    //  e.preventDefault();
     dispatch(handleSaveAnswer({
       authedUser, 
       qid :id,  

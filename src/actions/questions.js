@@ -13,7 +13,7 @@ export function receiveQuestions(questions) {
     };
 };
 
-export function saveAnswerToQuestion({authedUser, qid , answer}){ // , answer, authedUser, votes
+export function saveAnswerToQuestion({authedUser, qid , answer}){
     return {
         type: SAVE_ANSWER_TO_QUESTION,
         authedUser,
