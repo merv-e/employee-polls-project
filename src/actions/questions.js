@@ -12,10 +12,12 @@ export function receiveQuestions(questions) {
     };
 };
 
-export function saveAnswerToQuestion(id){ // answer, authedUser
+export function saveAnswerToQuestion({authedUser, qid , answer}){ // , answer, authedUser, votes
     return {
         type: SAVE_ANSWER_TO_QUESTION,
-        id, // answer, authedUser,
+        authedUser,
+        qid, 
+        answer,
     }
 };
 

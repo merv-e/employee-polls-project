@@ -31,20 +31,34 @@ export function addAnswerOfAuthenticatedUser({authedUser, answer, qid }) {
     }
 };
 
-export default function handleSaveAnswer(info) {
-  return (dispatch, getState) => {
-    // const {authedUser} = getState();
-    // dispatch(showLoading());
-    dispatch(addAnswerOfAuthenticatedUser(info));
-    dispatch(saveAnswerToQuestion(info));
-    
-    return saveQuestionAnswer(info)
-    // {
-    //   author: authedUser,
-    //   qid,
-    //   answer
+export default function handleSaveAnswer({
+      authedUser,
+      qid,
+      answer
 
-    // }
+    }) {
+  return (dispatch, getState) => {
+    const {authedUser} = getState();
+    // dispatch(showLoading());
+    dispatch(addAnswerOfAuthenticatedUser({
+     authedUser,
+      qid,
+      answer
+
+    }));
+    dispatch(saveAnswerToQuestion({
+      authedUser,
+      qid,
+      answer
+    }
+    ));
+    
+    return saveQuestionAnswer({
+     authedUser,
+     qid,
+     answer
+    })
+
     // .then((info) => 
     .catch(e => {
       console.warn('Error in handleSaveAnswer:', e);

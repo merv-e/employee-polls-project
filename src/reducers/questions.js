@@ -9,14 +9,15 @@ export default function questions( state={}, action) {
             };      
             
         case SAVE_ANSWER_TO_QUESTION:
-            // const {authedUser} = getState(); authedUser'ı degisik bir bicimde atamamız lazım 
+            // const {authedUser} = getState(); 
+            // authedUser'ı degisik bir bicimde atamamız lazım 
             return {
                 ...state,
                 [action.id]: {
                     ...state[action.id],
                     [action.answer]: {
                         ...state[action.id][action.answer],
-                        votes: state[action.id][action.answer].votes.concat(action.author)
+                        votes: state[action.id][action.answer].votes.concat([action.authedUser])
                     }
                 }
             };

@@ -8,29 +8,30 @@ const Poll = (props) => {
   const navigate = useNavigate();
   const {dispatch, authedUser, id, question} = props;
   const {author, name, avatar, text1, text2} = props.questionAndUserInfo;
-
-  // console.log(props.id);
-  // console.log(props.question.id);
-  // console.log(props.questionAndUserInfo.id);
-  // console.log(authedUser);
   
+  // console.log(question.id);
+  // console.log(id);
+  // yukaridakilerin her ikisi ile de question id'ye ulasmak mumkun.
+
   const chooseOptionOne = (e) => { 
      e.preventDefault();
      dispatch(handleSaveAnswer({
-        authedUser : author, 
-        id: question.id, 
-        answer: "optionOne", 
+        // authedUser, 
+        qid :id, 
+        answer : {qid :"optionOne"},
+        // : {authedUser : "optionOne"},
+        // votes :  
      }))
-     navigate("/")
+    //  navigate("/")
   };
   
   const chooseOptionTwo = (e) => { //
      e.preventDefault();
     dispatch(handleSaveAnswer(
       {
-        authedUser, 
-        qid: question.id,
-        answer: "optionTwo", 
+        // authedUser, 
+        qid :id,  //qid: question.id
+        answer: {qid : "optionTwo"}, 
     }))
 
    navigate("/")
