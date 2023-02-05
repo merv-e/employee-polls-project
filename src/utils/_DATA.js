@@ -181,19 +181,9 @@ export function _saveQuestion (question) {
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((resolve, reject) => {
-    // if (!authedUser || !qid || !answer) {
-    //   reject("Please provide authedUser, qid, and answer");
-    // }
-
-    if (!qid) {
-      reject("Please provide qid");
+    if (!authedUser || !qid || !answer) {
+      reject("Please provide authedUser, qid, and answer");
     }
-    else if (!authedUser) {
-      reject("Please provide authedUser");
-    }
-    else if (!answer) {
-      reject("Please provide answer");
-    };
 
     setTimeout(() => {
       users = {
@@ -222,3 +212,14 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+
+    // if (!qid) {
+    //   reject("Please provide qid");
+    // }
+    // else if (!authedUser) {
+    //   reject("Please provide authedUser");
+    // }
+    // else if (!answer) {
+    //   reject("Please provide answer");
+    // };
