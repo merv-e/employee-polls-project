@@ -203,7 +203,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...questions[qid],
           [answer]: {
             ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser]) // [authedUser]'dan [] kaldirildi.
+            votes: questions[qid][answer].votes.concat([authedUser]) 
           }
         }
       }
