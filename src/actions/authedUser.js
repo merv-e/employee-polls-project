@@ -7,16 +7,20 @@ export function setAuthedUser(id) {
     }
 }
 
-// export function handleLogin(userName, password) {
-//     return (dispatch, getState) => {
+export function handleLogin(id, password) {
+    return (dispatch, getState) => {
 
-//         const {users} = getState();
+        const {users} = getState();
 
-//         const userLogin = Object.values(users).includes(u => u.id === userName && u.password === password)
+        const successfulUserLogin = Object.values(users).includes(u => u.id === id && u.password === password)
         
-//         if (userLogin) {
-//             return dispatch(setAuthedUser(userLogin))
-//         }
-//     }
-// };
+        if (successfulUserLogin) {
+         return dispatch(setAuthedUser(id))
+         // navigate("/") 
+        }
+
+        
+        else alert("Incorrect password or username"); 
+    }
+};
 
