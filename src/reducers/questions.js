@@ -23,9 +23,10 @@ export default function questions( state={}, action) {
             };
         
         case ADD_QUESTION:
+            const {question} = action; //bu bilgiyi tam olarak nereden aliyoruz?
             return {
                   ...state,
-                  [action.question.qid]: action.question,
+                  [action.question.id]: action.question,
             };
         default:
             return state;

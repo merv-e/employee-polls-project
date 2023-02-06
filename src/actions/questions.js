@@ -1,4 +1,4 @@
-import { saveQuestion, /* saveQuestionAnswer */ } from "../utils/api";
+import { saveQuestion } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 // import addAnswerOfAuthenticatedUser from "./users";
 
@@ -29,16 +29,13 @@ export function saveAnswerToQuestion({authedUser, qid , answer}){
     }
 };
 
-export function handleAddQuestion({optionOneText, optionTwoText, author}) {
-    return(dispatch, getState) => {
-        // dispatch(showLoading());
+export function handleAddQuestion(info) {
+    return(dispatch) => {
+        dispatch(showLoading());
         
-        return saveQuestion({
-            optionOneText, optionTwoText, author})
-        .then((question) => {
-         dispatch(addQuestion(question));
-        })
-        // .then(()=> dispatch(hideLoading()))
+        return saveQuestion(info)
+        .then((question) => dispatch(addQuestion(question)))
+        .then(()=> dispatch(hideLoading()))
         }
 }
 

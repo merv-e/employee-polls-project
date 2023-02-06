@@ -35,9 +35,9 @@ export default function handleSaveAnswer(info) {
       .catch(e => { 
         console.warn('Error in handleSaveAnswer:', e);
         
-        dispatch(saveAnswerToQuestion(info));
+        // dispatch(saveAnswerToQuestion(info));
         
-        dispatch(addAnswerOfAuthenticatedUser(info));
+        // dispatch(addAnswerOfAuthenticatedUser(info));
         
         alert("An error occurred choosing an option. Please try again.")
       })

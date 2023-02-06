@@ -5,45 +5,23 @@ import { Navigate, useNavigate } from "react-router-dom";
 import {handleAddQuestion} from '../actions/questions'
 import { withRouter, formattedQuestion } from "../utils/helpers";
 
-
 const NewPoll = (props) => {
-
   const [firstOption, setFirstOption] = useState("");
   const [secondOption, setSecondOption] = useState("");
   
   const navigate = useNavigate();
   const {dispatch ,authedUser} = props; 
     
-    // const handleChange = (ev) => {
-      // const text1 = ev.target.value;
-      // setFirstOption(text1);
-      // };
-    
-    // const handleChangSecOp = (ev) => {
-    //   const text2 = ev.target.value;
-    //   setSecondOption(text2)
-    //   // dispatch()
-    // };
-    // console.log(firstOption); 
-    // console.log(secondOption); 
-    // console.log(props.id);
-    
-    // console.log(authedUser); => undefined
     const handleSubmit = (e) => { 
       e.preventDefault();
       dispatch(handleAddQuestion({
-        // author: authedUser
-        // firstOption : props.question.optionOne.text,
-        // secondOption: props.question.optionOne.text,
+        optionOneText : firstOption, 
+        optionTwoText : secondOption, 
+        author: authedUser,
       }))
-      // setFirstOption("");
-      // setSecondOption("");
-      
-      // navigate("/");
-
-      // console.log("First Option: ", firstOption);
-      // console.log("Second Option: ", secondOption);
-
+      setFirstOption("");
+      setSecondOption("");
+      navigate("/");
     };
 
   return (
@@ -61,10 +39,10 @@ const NewPoll = (props) => {
            type="submit" 
            className="btn" 
            onClick={handleSubmit} 
-          //  disabled=
-          //  {
-          //   firstOption === "" || secondOption === ""
-          //  }
+           disabled=
+           {
+            firstOption === "" || secondOption === ""
+           }
           >Submit
            </button>
         </form>
