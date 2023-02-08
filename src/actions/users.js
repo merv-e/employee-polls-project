@@ -27,18 +27,16 @@ export function addAnswerOfAuthenticatedUser({authedUser, qid, answer}) {
 export default function handleSaveAnswer(info) {
   return (dispatch) => {
     // dispatch(showLoading());
-    
     dispatch(addAnswerOfAuthenticatedUser(info));
     dispatch(saveAnswerToQuestion(info));
     
     return saveQuestionAnswer(info)
+    .then((info)=> {
+      dispatch(addAnswerOfAuthenticatedUser(info));
+      dispatch(saveAnswerToQuestion(info));
+    })
       .catch(e => { 
-        console.warn('Error in handleSaveAnswer:', e);
-        
-        // dispatch(saveAnswerToQuestion(info));
-        
-        // dispatch(addAnswerOfAuthenticatedUser(info));
-        
+        console.warn('Error in handleSaveAnswer:', e);        
         alert("An error occurred choosing an option. Please try again.")
       })
       

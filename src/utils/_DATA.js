@@ -1,9 +1,12 @@
+// import {avatar_1 }from "../images/"
+import avatar_1 from "../images/"
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: "../public/images/avatar_1.jpg",
+    avatarURL : avatar_1,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',

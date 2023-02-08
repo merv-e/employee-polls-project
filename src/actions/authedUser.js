@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 
 export function setAuthedUser(id) {
@@ -11,12 +13,14 @@ export function handleLogin(id, password) {
     return (dispatch, getState) => {
 
         const {users} = getState();
+        const navigate = useNavigate();
 
         const successfulUserLogin = Object.values(users).includes(u => u.id === id && u.password === password)
         
-        if (successfulUserLogin) {
+        if (successfulUserLogin === true) {
          return dispatch(setAuthedUser(id))
-         // navigate("/") 
+        //  .then(()=> navigate("/") 
+        //  )
         }
 
         

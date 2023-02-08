@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Nav = (props) => { 
     
@@ -12,7 +13,7 @@ const Nav = (props) => {
       <div>
         <ul>
           <li>
-            <Link to="/" style={style} >Home</Link>
+            <Link to="/" style={style}>Home</Link>
           </li>
           <li>
             <Link 
@@ -32,7 +33,7 @@ const Nav = (props) => {
       <div style={{paddingRight: "10px"}}>
         <ul>
           <li>
-            <img src={props.avatar} alt={`Avatar of ${props.author}`}/>
+            <img src={props.avatar} alt={`Avatar of ${props.authedUser}`}/>
           </li>
           <li>
           {/* TODO : img style  */}
@@ -47,4 +48,10 @@ const Nav = (props) => {
   );
 };
 
-export default Nav;
+const mapStateToProps = ({authedUser}) => {
+  return {
+    authedUser
+  }
+};
+
+export default connect(mapStateToProps)(Nav);

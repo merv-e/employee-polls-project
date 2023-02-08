@@ -39,7 +39,8 @@ export function formattedQuestion (question, user, authedUser) {
   const numOfVotesForOptionTwo = votesForOptionTwo.length;
   
   return {
-    id,
+    uid: authedUser,
+    qid : id,
     name,
     author,
     text1,

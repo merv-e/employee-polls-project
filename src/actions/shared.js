@@ -4,7 +4,7 @@ import { receiveQuestions } from "./questions";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import { setAuthedUser } from "./authedUser";
 
-// const AUTHED_ID = "mtsamis";
+const AUTHED_ID = "mtsamis";
 
 export function handleData() {
     return (dispatch) => {
@@ -13,7 +13,7 @@ export function handleData() {
         .then(({users, questions, authedUser}) => {
             dispatch(receiveUsers(users));
             dispatch(receiveQuestions(questions));
-            // dispatch(setAuthedUser(authedUser));      //bunu login'de dispatch edecegiz galiba :)       
+            dispatch(setAuthedUser(AUTHED_ID));      //bunu login'de dispatch edecegiz galiba :)       
             dispatch(hideLoading());
         })
     }

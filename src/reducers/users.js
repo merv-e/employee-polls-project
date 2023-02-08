@@ -11,6 +11,7 @@ export default function users(state={}, action) {
             return {
                 ...state,
                 ...action.users,
+                
             };
 
         case SAVE_ANSWER_TO_USER:
@@ -21,8 +22,9 @@ export default function users(state={}, action) {
                   answers: {
                     ...state[action.authedUser].answers,
                     [action.qid]: action.answer
-                  }
                 }
+                
+            }
             };      
         default:
             return state;

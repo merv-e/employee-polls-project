@@ -24,23 +24,23 @@ const App = (props) => {
       <LoadingBar/>
       <Nav/> 
       <div className="home-page">
-        {/* {
-          props.load === true 
-            ?  navigate("/login")         
-            : ( */}
+         {
+          props.load === true  
+          ? null // navigate("/login")         
+          : ( 
               <Routes> 
                 <Route path="/" exact element={<Home />} />                
-                <Route path="/login" element={<Login />} />
                 <Route path="/new" element={<NewPoll />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/question/:id" element={<Poll />} />
               </Routes>
-            {/* )
-        } */}
+        )}
+
       </div>
      </Fragment> 
   )
 };
+                        //  <Route path="/login" element={<Login />} /> 
 
 const mapStateToProps = ({authedUser} ) => ({ 
   load : authedUser === null      
