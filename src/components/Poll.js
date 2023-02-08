@@ -32,12 +32,6 @@ const Poll = (props) => {
    navigate("/")
   }
 
-  // console.log(!question.optionOne.votes.includes(authedUser));
-  console.log(votesForOptionOne);
-
-  console.log(question.optionTwo.votes.includes(authedUser));
-  console.log(votesForOptionTwo);
-
   return (
     <div className="poll">
         <h1>Would you rather</h1>

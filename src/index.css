@@ -110,9 +110,16 @@ ul {
   overflow-x:auto;
 }
 
-/* .avatar {
-  size: 
-} */
+.avatar-login{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.avatar-leaderboard {
+  height: auto;
+  width: 60px;
+}
 
 .form-poll {
   display: flex;

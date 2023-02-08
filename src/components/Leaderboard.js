@@ -17,6 +17,9 @@ const Leaderboard = (props) => {
         {
         props.userInfo.map( user =>
          <tr key={user.id}>
+            <td> 
+              <img className="avatar-leaderboard" src={user.avatar} alt={`Avatar of ${user.id}`} /> 
+            </td>
             <td>{user.id}</td>
             <td>{user.numOfAnswers} </td>
             <td>{user.numOfQuestions} </td>
@@ -36,7 +39,8 @@ const mapStateToProps = ({users}) => {
       id: u.id,
       numOfAnswers: Object.values(u.answers).length,
       numOfQuestions: Object.values(u.questions).length,
-      sum: Object.values(u.answers).length + Object.values(u.questions).length
+      sum: Object.values(u.answers).length + Object.values(u.questions).length,
+      avatar : Object.values(u.avatarURL).join("").toString()
     }))
     .sort((a, b) => b.sum - a.sum);
   
