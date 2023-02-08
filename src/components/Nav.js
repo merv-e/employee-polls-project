@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Nav = (props) => { 
-    
+  
+  const {userObject, authedUser} = props;
+
+  const avatar= userObject.filter(user => user.id === authedUser)
+    .map(user => user.avatarURL);
+  // .join("").toString()
+  // console.log(avatar);
+
     const style = {
         textDecoration: 'none',
         color: "black",
-    }
+    };
 
   return (
     <div className="navbar">
@@ -17,7 +24,7 @@ const Nav = (props) => {
           </li>
           <li>
             <Link 
-            to="/new" 
+            to="/add" 
             style={style}>
             Create New Poll
           </Link>
@@ -33,11 +40,9 @@ const Nav = (props) => {
       <div style={{paddingRight: "10px"}}>
         <ul>
           <li>
-            <img src={props.avatar} alt={`Avatar of ${props.authedUser}`}/>
+            <img className="avatar-login" src={avatar} alt={`Avatar of ${authedUser}`}/>
           </li>
           <li>
-          {/* TODO : img style  */}
-          {/* <img src={} alt/> */}
             <Link 
             to="/login" 
             style={style}>Logout</Link>
@@ -48,10 +53,17 @@ const Nav = (props) => {
   );
 };
 
-const mapStateToProps = ({authedUser}) => {
+
+const mapStateToProps = ({authedUser, users}) => {
+
+  const userObject = Object.values(users)
+   .map(user => user);
+
   return {
-    authedUser
+    authedUser,
+    userObject,
   }
+
 };
 
 export default connect(mapStateToProps)(Nav);
