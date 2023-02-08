@@ -9,22 +9,24 @@ export function setAuthedUser(id) {
     }
 }
 
-export function handleLogin(id, password) {
+export function handleLogin(id) { // ,password
     return (dispatch, getState) => {
 
-        const {users} = getState();
         const navigate = useNavigate();
-
-        const successfulUserLogin = Object.values(users).includes(u => u.id === id && u.password === password)
         
-        if (successfulUserLogin === true) {
-         return dispatch(setAuthedUser(id))
-        //  .then(()=> navigate("/") 
-        //  )
-        }
+        dispatch(setAuthedUser(id));
+        navigate("/");
 
-        
-        else alert("Incorrect password or username"); 
     }
 };
 
+        // const successfulUserLogin = Object.values(users).includes(u => u.id === id && u.password === password)
+        
+        // if (successfulUserLogin === true) {
+        //  return dispatch(setAuthedUser(id))
+        //  .then(()=> navigate("/") 
+        //  )
+        // }
+
+        
+        // else alert("Incorrect password or username"); 

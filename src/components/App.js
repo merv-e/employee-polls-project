@@ -13,53 +13,66 @@ import { useNavigate } from "react-router-dom";
  
 const App = (props) => {
 
+  const navigate = useNavigate();
+
   useEffect(()=> {
+    // props.notLoggedIn === true 
+    //   ? navigate("/login") 
+      // : 
       props.dispatch(handleData());
   }, []);
 
-  // const navigate = useNavigate();
+
+  // if (props.notLoggedIn) {
+  //   navigate("/login") 
+  // }
 
   return (
     <Fragment>
       <LoadingBar/>
       <Nav/> 
-      <div className="home-page">
-         {
-          props.load === true  
-          ? null // navigate("/login")         
-          : ( 
-              <Routes> 
-                <Route path="/" exact element={<Home />} />                
-                <Route path="/add" element={<NewPoll />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/question/:id" element={<Poll />} />
-              </Routes>
-        )}
-
+        
+        <div className="home-page">
+      <Routes> 
+        { props.load === true 
+          ? <Route path="/login" element={<Login />} /> 
+          : (
+            <Route path="/" exact element={<Home />} />  
+            )              
+        }
+          </Routes> 
       </div>
      </Fragment> 
   )
 };
-                        //  <Route path="/login" element={<Login />} /> 
+
+// : (
+// )
+            // <Route path="/add" element={<NewPoll />} />
+            // <Route path="/leaderboard" element={<Leaderboard />} />
+            // <Route path="/question/:id" element={<Poll />} />
+// {/*(
+//           )      */}  
 
 const mapStateToProps = ({authedUser} ) => ({ 
-  load : authedUser === null      
+  load : authedUser === null,
 })
 
 export default connect(mapStateToProps)(App)
 
 
+{/* <Route path="/login" element={<Login />} />  */}
 
       // {/* {props.load === true 
       //   ?  <Login/> 
       //   : <Home />  
-      // } */}
-      
-      //       {/* <Route path="/login" exact 
-      //        element=
+    // } */}
+    
+    //       {/* <Route path="/login" exact 
+    //        element=
       //        {
-      //         !loggedIn 
-      //         ? <Login/> 
-      //         : <Navigate replace to={<Home/>} /> 
-      //       } 
+        //         !loggedIn 
+        //         ? <Login/> 
+        //         : <Navigate replace to={<Home/>} /> 
+        //       } 
       //       /> */}
