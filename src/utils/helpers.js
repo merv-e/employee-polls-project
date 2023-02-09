@@ -63,14 +63,4 @@ export function formattedQuestion (question, user, authedUser) {
     }
   }
 
-// export function userLogin ({id, password}) {
-//   return new Promise ((resolve, reject )=> {
-//     if (!id || !password) {
-//      reject("Please provide id and/or password. ") 
-//     };
-//     setTimeout(()=> {
-//         resolve(id)
-//       }, 1000)
-//     })
-// }; 
  

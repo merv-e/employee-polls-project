@@ -1,50 +1,42 @@
 import { useState } from "react";
-
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImg from "../images/employee-poll.png";
-// import { handleLogin } from "../actions/shared";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {setAuthedUser} from "../actions/authedUser"
 
 const Login = (props) => {
   
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-
-  const authentification = 
-    props.userInfo.filter(u => u.id === username && u.password === password)
-      .map(u => u.id);
+  const {dispatch} = props;
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const authentification = props.userInfo.filter(u => u.id === username && u.password === password).map(u => u.id);
   
+  const user = authentification.find(user => user);
   // console.log(props.userInfo.map (user => user.id) );
   // console.log(props.userInfo.map (user => user.password) );
   // console.log(props.successfulUserlogin);
-  
-  
+   
+  // console.log(authentification.find(user => user));
+  // console.log(username);
+
   const handleSubmit = (e) => { 
     e.preventDefault();
-    const {dispatch} = props;
-    //  dispatch(showLoading());
-    
-    // console.log(authentification.length);
-    console.log(authentification.find(user => user));
-    console.log(username);
-    
-    if (authentification.find(user => user)) {
+    dispatch(showLoading());
+
+    if (user) {
      return dispatch(setAuthedUser(username))
     }
-
     else alert("Incorrect password or username");
-    navigate("/") 
 
-  setUserName("");
-  setPassword("");
+    navigate("/"); 
+
+    setUserName("");
+    setPassword("");
   
-  // dispatch(hideLoading());
+  dispatch(hideLoading());
   };
-  
   
   return (
     <div className="login-page">
@@ -77,7 +69,7 @@ const Login = (props) => {
   )
 };
 
-  const mapStateToProps = ({users, authedUser}) => {
+  const mapStateToProps = ({users}) => {
 
     const userInfo = Object.values(users)
     .map(u => ({
@@ -86,7 +78,6 @@ const Login = (props) => {
     }))
 
     return {
-      successfullogin : authedUser !== null,
       userInfo,
     };
 };

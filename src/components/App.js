@@ -32,14 +32,23 @@ const App = (props) => {
       <LoadingBar/>
       <Nav/>        
       <div className="home-page">
-        {/* <Routes>  */}
-          { //suan itibariyle authedUser'imiz bulundugu icin bu kod ise yaramiyor! Ancak diger sayfalara gidebiliyoruz!
-            props.load === true  
-            ? <Login />
-            : <Home/>
-           
-          }
-        {/* </Routes>  */}
+      <Routes> 
+        <Route 
+          path="/" exact 
+          element={
+            props.load === true 
+            ?  <Login/> 
+            :  <Home /> 
+            } />
+
+            {/* <Fragment> */}
+                <Route path="/" exact element={<Home />} />
+                <Route path="/add" element={<NewPoll />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/question/:id" element={<Poll />} />
+                <Route path="/login" element={<Login />} /> 
+            {/* </Fragment> */}
+        </Routes> 
       </div>
      </> 
   )
@@ -55,11 +64,4 @@ export default connect(mapStateToProps)(App)
     
 //  {/* <Route path="/login" element={<Login />} />  */}
 //             {/* (
-//           <Fragment>
-//               <Route path="/" exact element={<Home />} />  
-//               <Route path="/add" element={<NewPoll />} />
-//               <Route path="/leaderboard" element={<Leaderboard />} />
-//               <Route path="/question/:id" element={<Poll />} />
-//               <Route path="/login" element={<Login />} /> 
-//           </Fragment>
 //               )                */}
