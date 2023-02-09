@@ -30,9 +30,11 @@ const App = (props) => {
   return (
     <>
       <LoadingBar/>
-      <Nav/>        
       <div className="home-page">
+      <Nav/>        
       <Routes> 
+      {/* Note : add errorElement to routes! */}
+      {/* It works this way howeever, the navbar shouldn't be seen here not like the way it is now */}
         <Route 
           path="/" exact 
           element={
@@ -46,7 +48,10 @@ const App = (props) => {
                 <Route path="/add" element={<NewPoll />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/question/:id" element={<Poll />} />
-                <Route path="/login" element={<Login />} /> 
+                <Route path="/login" element={<Login />} 
+                // errorElement={} 
+                /> 
+
             {/* </Fragment> */}
         </Routes> 
       </div>
@@ -60,8 +65,3 @@ const mapStateToProps = ({authedUser} ) => ({
 })
 
 export default connect(mapStateToProps)(App)
-
-    
-//  {/* <Route path="/login" element={<Login />} />  */}
-//             {/* (
-//               )                */}
