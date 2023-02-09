@@ -1,8 +1,7 @@
 import {
     RECEIVE_USERS, 
-    // ADD_QUESTION_AUTHOR, 
+    ADD_NEW_QUESTION_USER, 
     SAVE_ANSWER_TO_USER
-    // ADD_ANSWER_AUTHOR
 } from "../actions/users";
 
 export default function users(state={}, action) {
@@ -11,7 +10,6 @@ export default function users(state={}, action) {
             return {
                 ...state,
                 ...action.users,
-                
             };
 
         case SAVE_ANSWER_TO_USER:
@@ -23,20 +21,19 @@ export default function users(state={}, action) {
                     ...state[action.authedUser].answers,
                     [action.qid]: action.answer
                 }
-                
             }
             };      
+        
+        case ADD_NEW_QUESTION_USER:
+            const {authedUser} = action;
+                return {
+                    ...state,
+                    [authedUser] : {
+                        ...state[authedUser],
+                        questions : state[authedUser].questions.concat([action.id]),
+                    }
+                };
         default:
             return state;
     }
 };
-
-            // case  ADD_QUESTION_AUTHOR:
-            //     const {id, author} = action;
-            //     return {
-            //         ...state,
-            //         [author] : {
-            //             ...state.author,
-            //             questions : state[author].questions.concat(id),
-            //         }
-            //     };

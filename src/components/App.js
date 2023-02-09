@@ -28,51 +28,49 @@ const App = (props) => {
   // }
 
   return (
-    <Fragment>
+    <>
       <LoadingBar/>
-      <Nav/> 
-        
-        <div className="home-page">
-      <Routes> 
-        { props.load === true 
-          ? <Route path="/login" element={<Login />} /> 
-          : (
-            <Route path="/" exact element={<Home />} />  
-            )              
-        }
-          </Routes> 
+      <Nav/>        
+      <div className="home-page">
+        <Routes> 
+          { //suan itibariyle authedUser'imiz bulundugu icin bu kod ise yaramiyor! Ancak diger sayfalara gidebiliyoruz!
+            props.load === true  
+            ? 
+            <Route path="/login" element={<Login />} /> 
+            : (
+          <Fragment>
+              <Route path="/" exact element={<Home />} />  
+              <Route path="/add" element={<NewPoll />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/question/:id" element={<Poll />} />
+          </Fragment>
+              )              
+          }
+        </Routes> 
       </div>
-     </Fragment> 
+     </> 
   )
 };
 
-// : (
-// )
-            // <Route path="/add" element={<NewPoll />} />
-            // <Route path="/leaderboard" element={<Leaderboard />} />
-            // <Route path="/question/:id" element={<Poll />} />
-// {/*(
-//           )      */}  
-
 const mapStateToProps = ({authedUser} ) => ({ 
   load : authedUser === null,
+  // loggedIn : authedUser !== null,
 })
 
 export default connect(mapStateToProps)(App)
 
 
-{/* <Route path="/login" element={<Login />} />  */}
+          {/* <Route path="/login"  
+           element=
+             {
+                !loggedIn 
+                ? <Login/> 
+                : <Navigate replace to={<Home/>} />  */}
 
       // {/* {props.load === true 
       //   ?  <Login/> 
       //   : <Home />  
     // } */}
+              {/* }  */}
+            {/* /> */}
     
-    //       {/* <Route path="/login" exact 
-    //        element=
-      //        {
-        //         !loggedIn 
-        //         ? <Login/> 
-        //         : <Navigate replace to={<Home/>} /> 
-        //       } 
-      //       /> */}

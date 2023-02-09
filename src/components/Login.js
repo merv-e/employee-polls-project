@@ -18,8 +18,6 @@ const Login = ({e, dispatch}) => {
     console.log(selectedAuthedUser);
   };
 
-
-
   return (
     <div className="login-page">
       <img
