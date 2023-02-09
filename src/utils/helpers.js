@@ -63,20 +63,14 @@ export function formattedQuestion (question, user, authedUser) {
     }
   }
 
-  // export function _authentification ({ id, users, password, name }) {
-  //   return new Promise((res, rej) => {
-  //     setTimeout(() => {
-  //       users = {
-  //         ...users,
-  //         [id]: {
-  //           ...users[id],
-  //           name: hasLiked === true
-  //             ? users[id].name.filter((userName) => userName !== e.target.value)
-  //             : users[id].likes.concat([authedUser])
-  //         }
-  //       }
-  
-  //       res()
-  //     }, 500)
-  //   })
-  // }
+// export function userLogin ({id, password}) {
+//   return new Promise ((resolve, reject )=> {
+//     if (!id || !password) {
+//      reject("Please provide id and/or password. ") 
+//     };
+//     setTimeout(()=> {
+//         resolve(id)
+//       }, 1000)
+//     })
+// }; 
+ 
