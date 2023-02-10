@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import NavLogout from "./NavLogout"
 
 const Nav = (props) => { 
   
@@ -17,43 +18,38 @@ const Nav = (props) => {
 
   return (
     <div className="navbar">
-      <div>
-        <ul>
-          <li>
-            <Link to="/" style={style}>Home</Link>
-          </li>
-          <li>
-            <Link 
-            to="/add" 
-            style={style}>
-            Create New Poll
-          </Link>
-          </li>
-          <li>
-            <Link 
-            to="/leaderboard" 
-            style={style}>Leaderboard</Link>
-          </li>
-        </ul>
-      </div>
-
-      <div style={{paddingRight: "10px"}}>
-        <ul>
-          <li>
-            <img className="avatar-login" src={avatar} alt={`Avatar of ${authedUser}`}/>
-          </li>
-          <li>
-            <Link 
-            to="/login" 
-            style={style}>Logout</Link>
-          </li>
-        </ul>
-      </div>
+    {
+      authedUser === null 
+      ? null
+      : (
+    <div>
+      <ul>
+        <li>
+          <Link to="/" style={style}>Home</Link>
+        </li>
+        <li>
+          <Link 
+          to="/add" 
+          style={style}>
+          Create New Poll
+        </Link>
+        </li>
+        <li>
+          <Link 
+          to="/leaderboard" 
+          style={style}>Leaderboard</Link>
+        </li>
+      </ul>
+      <NavLogout style= {style}/>      {/* Normalde bu element div'in altinda ve baska bir div'in icinde idi. */}
+    </div>
+        )
+      }
     </div>
   );
 };
 
-
+// {/* <div>
+// </div> */}
 const mapStateToProps = ({authedUser, users}) => {
 
   const userObject = Object.values(users)
@@ -67,3 +63,6 @@ const mapStateToProps = ({authedUser, users}) => {
 };
 
 export default connect(mapStateToProps)(Nav);
+
+
+// {/* <img className="avatar-login" src={avatar} alt={`Avatar of ${authedUser}`}/> */}
