@@ -6,7 +6,6 @@ const NavLogout = ({style, authedUser}) => {
 
   const handleLogout = ({dispatch}) => {
     dispatch(logOut(authedUser));
-    // Navigate("/login")
   };
 
   return (

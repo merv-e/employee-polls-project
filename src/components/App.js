@@ -2,18 +2,28 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import {handleData} from '../actions/shared';
 import LoadingBar  from "react-redux-loading-bar";
-import {Routes, Route, } from "react-router-dom"; //Navigate
+import {Routes, Route, Navigate, } from "react-router-dom"; //Navigate
 import Home from "./Home";
 import Login from "./Login";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
 import Poll from "./Poll";
 import Nav from "./Nav"
-// import { useNavigate } from "react-router-dom";
- 
+import ErrorPage from "./ErrorPage";
+import { logOut } from "../actions/authedUser";
+
+
 const App = (props) => {
 
-  // const navigate = useNavigate();
+  // if(props.authedUser === null) {
+    //   Navigate("/login");
+    // }
+    
+    if(props.authedUser === null) {
+      // alert("You need to login first!");
+      // props.dispatch(logOut);
+      Navigate("/login");
+  }
 
   useEffect(()=> {
       props.dispatch(handleData());
@@ -34,12 +44,36 @@ const App = (props) => {
             ?  <Login/> 
             :  <Home /> 
             } />
-                <Route path="/" exact element={<Home />} />
-                <Route path="/add" element={<NewPoll />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/question/:id" element={<Poll />} />
-                {/* <Route path="/login" element={<Login />} />  */}
-                {/* errorElement={}  */}
+
+        <Route 
+          path="/" exact 
+          element={props.userLoginNecessary === false 
+            ? <Home/> 
+            : <Login/> } 
+            errorElement={<ErrorPage/>}/>
+        <Route 
+          path="/add" 
+          element={props.userLoginNecessary === false 
+            ?  <NewPoll />
+            : <Login/> } 
+            errorElement={<ErrorPage/>} />
+        <Route 
+          path="/leaderboard" 
+          element={ props.userLoginNecessary === false 
+            ? <Leaderboard />
+            : <Login/> } 
+          errorElement={<ErrorPage/>} />
+        <Route 
+          path="/question/:id" 
+          element={ props.userLoginNecessary === false 
+            ? <Poll/>
+            : <Login/> } 
+          errorElement={<ErrorPage/>} />
+        
+        <Route 
+          path="/404" 
+          element={<ErrorPage />} />
+        {/* <Route path="/login" element={<Login />} errorElement={<ErrorPage/>} />  */}
         </Routes> 
       </div>
      </> 

@@ -1,9 +1,14 @@
 import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Polls from "./Polls";
 
 const Home = (props) => {
   const hasUserVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
+
+  // if(props.authedUser === null) {
+  //   Navigate("/404");
+  // }
   
   return (
     <div>

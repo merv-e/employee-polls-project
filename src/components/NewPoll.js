@@ -2,14 +2,26 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { showLoading } from "react-redux-loading-bar";
 import { Navigate, useNavigate } from "react-router-dom";
+import { logOut } from "../actions/authedUser";
 import {handleAddQuestion} from '../actions/questions'
-import { withRouter, formattedQuestion } from "../utils/helpers";
+import { withRouter } from "../utils/helpers";
 
 const NewPoll = (props) => {
+  // if(props.authedUser === null) {
+  //   Navigate("/404");
+  // };
+
+  const navigate = useNavigate();
+  
+  if(props.authedUser === null) {
+    // alert("You need to login first!")
+    // props.dispatch(logOut);
+    navigate("/login");
+}
+
   const [firstOption, setFirstOption] = useState("");
   const [secondOption, setSecondOption] = useState("");
   
-  const navigate = useNavigate();
   const {dispatch ,authedUser} = props; 
     
     const handleSubmit = (e) => { 
@@ -56,7 +68,6 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
   const question = questions[id];
 
   return {
-    // question : formattedQuestion(question, users[question.author]),
     id,
     authedUser,
   }

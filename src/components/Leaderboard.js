@@ -1,7 +1,13 @@
 import { connect } from "react-redux";
 import { Table } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 
 const Leaderboard = (props) => {
+
+  if(props.authedUser === null) {
+    // Navigate("/404");
+    // Navigate("/login")
+  }
 
   return (
     <div className="leaderboard-table" >
@@ -32,7 +38,7 @@ const Leaderboard = (props) => {
   )
 };
 
-const mapStateToProps = ({users}) => {
+const mapStateToProps = ({users, authedUser}) => {
   
   const userInfo = Object.values(users)
     .map(u => ({
@@ -46,6 +52,7 @@ const mapStateToProps = ({users}) => {
   
   return {
     userInfo,
+    authedUser
   };
 };
 
