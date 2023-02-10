@@ -5,7 +5,7 @@ import { formattedQuestion, withRouter } from "../utils/helpers";
 const Poll = (props) => { 
 
   const {dispatch, authedUser, question} = props; 
-  const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne} = props.questionAndUserInfo;
+  const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne, percentageOptionOne, percentageOptionTwo} = props.questionAndUserInfo;
   
   const chooseOptionOne = (e) => { 
      dispatch(handleSaveAnswer({
@@ -41,6 +41,7 @@ const Poll = (props) => {
                  Choose
                  </button>
                 <p className="center">Number of votes: {votesForOptionOne.length}</p>
+                <p className="center">{percentageOptionOne}</p>
               </div>
 
               <div className="option">
@@ -51,6 +52,7 @@ const Poll = (props) => {
                  Choose
                  </button>
                 <p className="center">Number of votes : {votesForOptionTwo.length}</p>
+                <p className="center">{percentageOptionTwo}</p>
               </div>
             </div>
           ) 

@@ -1,10 +1,10 @@
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
-function calculatePercentage(numberOfVotesPerOption, total ) {
+function calculatePercentage(numberOfVotesPerOption, total) {
     if (numberOfVotesPerOption !== 0 && total !==0) {
-        return  (100 * numberOfVotesPerOption)/total;
-    }
-    return ""; // return 0 or "" or null?
+        return (100 * numberOfVotesPerOption/total).toFixed() + "%" ;
+      }
+      else <p>No one has voted</p>
 };
 
 function getDate(timestamp) {
@@ -30,13 +30,10 @@ export function formattedQuestion (question, user, authedUser) {
    
   const votesForOptionOne = optionOne.votes;
   const votesForOptionTwo = optionTwo.votes;
-  const totalNumOfVotes  = optionOne.votes + optionTwo.votes;
+  const total  = votesForOptionOne.length + votesForOptionTwo.length;
   
   const text1 = optionOne.text
   const text2 = optionTwo.text;
-
-  const numOfVotesForOptionOne = votesForOptionOne.length;
-  const numOfVotesForOptionTwo = votesForOptionTwo.length;
   
   return {
     uid: authedUser,
@@ -50,10 +47,8 @@ export function formattedQuestion (question, user, authedUser) {
     votesForOptionOne,
     votesForOptionTwo,
 
-    numOfVotesForOptionOne,
-    numOfVotesForOptionTwo,
-    percentageOptionOne: calculatePercentage(numOfVotesForOptionOne, totalNumOfVotes),
-    percentageOptionTwo: calculatePercentage(numOfVotesForOptionTwo, totalNumOfVotes),
+    percentageOptionOne: calculatePercentage(votesForOptionOne.length, total),
+    percentageOptionTwo: calculatePercentage(votesForOptionTwo.length, total),
     
     answersOfUser : user.answers,
     questionsOfUser : user.questions, 

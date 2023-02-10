@@ -28,7 +28,7 @@ const App = (props) => {
       {/* Note : add errorElement to routes! */}
       {/* It works this way howeever, the navbar shouldn't be seen here not like the way it is now */}
         <Route 
-          path="/" exact 
+          path="/login" 
           element={
             props.userLoginNecessary === true 
             ?  <Login/> 
@@ -38,7 +38,7 @@ const App = (props) => {
                 <Route path="/add" element={<NewPoll />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/question/:id" element={<Poll />} />
-                <Route path="/login" element={<Login />} /> 
+                {/* <Route path="/login" element={<Login />} />  */}
                 {/* errorElement={}  */}
         </Routes> 
       </div>

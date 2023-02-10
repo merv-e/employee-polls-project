@@ -30,7 +30,7 @@ const Login = (props) => {
     }
     else alert("Incorrect password or username");
 
-    navigate("/"); 
+    // navigate("/"); 
 
     setUserName("");
     setPassword("");
