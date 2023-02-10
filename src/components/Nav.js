@@ -48,8 +48,6 @@ const Nav = (props) => {
   );
 };
 
-// {/* <div>
-// </div> */}
 const mapStateToProps = ({authedUser, users}) => {
 
   const userObject = Object.values(users)

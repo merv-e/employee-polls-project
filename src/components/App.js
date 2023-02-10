@@ -16,16 +16,8 @@ const App = (props) => {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    // props.notLoggedIn === true 
-    //   ? navigate("/login") 
-      // : 
       props.dispatch(handleData());
   }, []);
-
-
-  // if (props.notLoggedIn) {
-  //   navigate("/login") 
-  // }
 
   return (
     <>
@@ -35,10 +27,11 @@ const App = (props) => {
       <Routes> 
       {/* Note : add errorElement to routes! */}
       {/* It works this way howeever, the navbar shouldn't be seen here not like the way it is now */}
+        
         <Route 
           path="/" exact 
           element={
-            props.load === true 
+            props.userLoginNecessary === true 
             ?  <Login/> 
             :  <Home /> 
             } />
@@ -60,7 +53,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({authedUser} ) => ({ 
-  load : authedUser === null,
+  userLoginNecessary : authedUser === null,
   // loggedIn : authedUser !== null,
 })
 
