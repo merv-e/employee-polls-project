@@ -1,36 +1,27 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom"; 
 import handleSaveAnswer from "../actions/users";
 import { formattedQuestion, withRouter } from "../utils/helpers";
 
 const Poll = (props) => { 
 
-  const navigate = useNavigate();
-  const {dispatch, authedUser, id, question} = props;
+  const {dispatch, authedUser, question} = props; 
+  const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne} = props.questionAndUserInfo;
   
-  const {author, name, avatar, text1, text2, uid, qid, votesForOptionTwo, votesForOptionOne} = props.questionAndUserInfo;
-  
-
   const chooseOptionOne = (e) => { 
-    //  e.preventDefault();
      dispatch(handleSaveAnswer({
-      authedUser, //: uid, 
+      authedUser, 
       qid,
-      answer: "optionOne" //{qid : "optionOne"} 
+      answer: "optionOne" 
     }))
-     navigate("/")
   };
   
   const chooseOptionTwo = (e) => {
-    //  e.preventDefault();
     dispatch(handleSaveAnswer({
-      authedUser :uid, 
+      authedUser, 
       qid,  
-      answer: "optionTwo" //{qid :"optionTwo"}
+      answer: "optionTwo" 
     }))
-
-   navigate("/")
-  }
+  };
 
   return (
     <div className="poll">

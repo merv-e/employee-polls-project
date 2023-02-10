@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useEffect, Fragment, useState } from "react";
+import { useEffect } from "react";
 import {handleData} from '../actions/shared';
 import LoadingBar  from "react-redux-loading-bar";
 import {Routes, Route, } from "react-router-dom"; //Navigate
@@ -9,11 +9,11 @@ import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
 import Poll from "./Poll";
 import Nav from "./Nav"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
  
 const App = (props) => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(()=> {
       props.dispatch(handleData());
@@ -27,7 +27,6 @@ const App = (props) => {
       <Routes> 
       {/* Note : add errorElement to routes! */}
       {/* It works this way howeever, the navbar shouldn't be seen here not like the way it is now */}
-        
         <Route 
           path="/" exact 
           element={
@@ -35,17 +34,12 @@ const App = (props) => {
             ?  <Login/> 
             :  <Home /> 
             } />
-
-            {/* <Fragment> */}
                 <Route path="/" exact element={<Home />} />
                 <Route path="/add" element={<NewPoll />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/question/:id" element={<Poll />} />
-                <Route path="/login" element={<Login />} 
-                // errorElement={} 
-                /> 
-
-            {/* </Fragment> */}
+                <Route path="/login" element={<Login />} /> 
+                {/* errorElement={}  */}
         </Routes> 
       </div>
      </> 
@@ -54,7 +48,6 @@ const App = (props) => {
 
 const mapStateToProps = ({authedUser} ) => ({ 
   userLoginNecessary : authedUser === null,
-  // loggedIn : authedUser !== null,
 })
 
 export default connect(mapStateToProps)(App)
