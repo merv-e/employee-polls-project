@@ -1,8 +1,21 @@
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import handleSaveAnswer from "../actions/users";
 import { formattedQuestion, withRouter } from "../utils/helpers";
+import ErrorPage from "./ErrorPage";
 
 const Poll = (props) => { 
+
+
+  // NOTE! questionAndUserInfo yerine author etc. burada tanımla bakalım o zaman olacak mı
+
+  const doesQuestionExist = props.questionIds.includes(props.id); 
+  // const auth =  props.question.author;
+  // const que = props.question;
+  
+  console.log(doesQuestionExist);
+  // console.log(props.question.author);
+  console.log(props.authedUser);
 
   const {dispatch, authedUser, question} = props; 
   const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne, percentageOptionOne, percentageOptionTwo} = props.questionAndUserInfo;
@@ -24,6 +37,12 @@ const Poll = (props) => {
   };
 
   return (
+    <>
+    {
+      (!doesQuestionExist && !props.question.author && !props.authedUser) 
+
+      ? (<ErrorPage/>)
+      : (
     <div className="poll">
         <h1>Would you rather</h1>
         <img src={avatar} alt={`Avatar of ${author}`} className="avatar"/>
@@ -70,19 +89,24 @@ const Poll = (props) => {
             )
         }
     </div>
+    )
+     }
+  </>
   )
 };
 
 const mapStateToProps = ({authedUser, questions, users }, props) => {
 
-  const { id } = props.router.params;
+  const { id} = props.router.params;
   const question = questions[id];
 
   return {
     id,
     questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
     authedUser,
-    question
+    question,
+    questions,
+    questionIds: Object.values(questions).map((q) => q.id),
   }
   
 };

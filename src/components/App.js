@@ -11,23 +11,25 @@ import Poll from "./Poll";
 import Nav from "./Nav"
 import ErrorPage from "./ErrorPage";
 import { logOut } from "../actions/authedUser";
+import { withRouter } from "../utils/helpers";
 
 
 const App = (props) => {
-
-  // if(props.authedUser === null) {
-    //   Navigate("/login");
-    // }
     
-    if(props.authedUser === null) {
-      // alert("You need to login first!");
-      // props.dispatch(logOut);
-      Navigate("/login");
-  }
-
+  //   if(props.authedUser === null) {
+  //     // alert("You need to login first!");
+  //     // props.dispatch(logOut);
+  //     Navigate("/login");
+  // }
+  
   useEffect(()=> {
       props.dispatch(handleData());
   }, []);
+
+  // if ( props.userLoginNecessary === true) {
+  //   Navigate("/login");
+  // }
+  // else Navigate("/")
 
   return (
     <>
@@ -35,14 +37,15 @@ const App = (props) => {
       <div className="home-page">
       <Nav/>        
       <Routes> 
-      {/* Note : add errorElement to routes! */}
-      {/* It works this way howeever, the navbar shouldn't be seen here not like the way it is now */}
+      {/* TODO : Learn more about error element */}
         <Route 
           path="/login" 
           element={
             props.userLoginNecessary === true 
             ?  <Login/> 
             :  <Home /> 
+            // Sorun cozuldu! 
+            // ONEMLI NOT : Giris yapinca home adresine gitmesi gerekiyor, gidiyor da ancak adres ismi degismiyor ve login olarak kaliyor.
             } />
 
         <Route 
@@ -63,25 +66,44 @@ const App = (props) => {
             ? <Leaderboard />
             : <Login/> } 
           errorElement={<ErrorPage/>} />
+        
         <Route 
           path="/question/:id" 
           element={ props.userLoginNecessary === false 
             ? <Poll/>
-            : <Login/> } 
-          errorElement={<ErrorPage/>} />
+            : <Login/> 
+            } 
+          errorElement={
+            <ErrorPage />
+           } 
+         />
         
         <Route 
           path="/404" 
-          element={<ErrorPage />} />
-        {/* <Route path="/login" element={<Login />} errorElement={<ErrorPage/>} />  */}
+          element={
+            <ErrorPage />
+           } 
+        />
         </Routes> 
       </div>
      </> 
   )
 };
 
-const mapStateToProps = ({authedUser} ) => ({ 
-  userLoginNecessary : authedUser === null,
-})
+const mapStateToProps = ({authedUser, questions}, props ) => { 
+  
+  // const { id } = props.router.params;
+  // const question = questions[id];
+  // const {abc} = props.router.location.pathname;
 
+  return {
+    userLoginNecessary : authedUser === null,
+    // id,
+    questions,
+    // question,
+    // doesQuestionExist : props.questions.includes(id)
+  }
+}
+
+// export default withRouter(connect(mapStateToProps)(App))
 export default connect(mapStateToProps)(App)

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import loginImg from "../images/employee-poll.png";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {setAuthedUser} from "../actions/authedUser"
+import { withRouter } from "../utils/helpers";
 
 const Login = (props) => {
   
@@ -14,23 +15,18 @@ const Login = (props) => {
   const authentification = props.userInfo.filter(u => u.id === username && u.password === password).map(u => u.id);
   
   const user = authentification.find(user => user);
-  // console.log(props.userInfo.map (user => user.id) );
-  // console.log(props.userInfo.map (user => user.password) );
-  // console.log(props.successfulUserlogin);
-   
-  // console.log(authentification.find(user => user));
-  // console.log(username);
 
   const handleSubmit = (e) => { 
     e.preventDefault();
     dispatch(showLoading());
 
     if (user) {
-     return dispatch(setAuthedUser(username))
+      dispatch(setAuthedUser(username));
+      //eger adres cubugunda bi link yazılıysa question-question_id gibi---  bizi error page'e gotursun, yoksa ana sayfaya gitsin
+    //   if (props.x) navigate("/");
     }
+    
     else alert("Incorrect password or username");
-
-    // navigate("/"); 
 
     setUserName("");
     setPassword("");
@@ -69,7 +65,10 @@ const Login = (props) => {
   )
 };
 
-  const mapStateToProps = ({users}) => {
+  const mapStateToProps = ({users}, props) => {
+
+  const {x} = props.router.location.pathname 
+  //!== id;
 
     const userInfo = Object.values(users)
     .map(u => ({
@@ -79,7 +78,8 @@ const Login = (props) => {
 
     return {
       userInfo,
+      x
     };
 };
 
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps)(Login))

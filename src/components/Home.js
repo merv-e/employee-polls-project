@@ -5,10 +5,6 @@ import Polls from "./Polls";
 const Home = (props) => {
   const hasUserVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
   const hasUserNotVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
-
-  // if(props.authedUser === null) {
-  //   Navigate("/404");
-  // }
   
   return (
     <div>
