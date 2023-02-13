@@ -12,6 +12,7 @@ import Nav from "./Nav"
 import ErrorPage from "./ErrorPage";
 import { logOut } from "../actions/authedUser";
 import { withRouter } from "../utils/helpers";
+import { useRouteError } from "react-router-dom";
 
 
 const App = (props) => {
@@ -26,10 +27,30 @@ const App = (props) => {
       props.dispatch(handleData());
   }, []);
 
-  // if ( props.userLoginNecessary === true) {
+  // if ( props.isUserLoginNecessary === true) {
   //   Navigate("/login");
   // }
   // else Navigate("/")
+
+
+  const path = props.router.location.pathname.replace("/question/", "");
+  // console.log(path);
+
+//  const doesQuestionExist = props.questions.filter(q => q.id === path
+//   ).map(z => z)
+//  includes(path); 
+
+  // console.log(doesQuestionExist);
+  // console.log(props.questions);
+  // console.log(props.questionIds);
+ 
+  const ErrorBoundary = () => {
+    let error = useRouteError();
+    console.error(error);
+    // Uncaught ReferenceError: path is not defined
+    return <div>Dang!</div>;
+  };
+  
 
   return (
     <>
@@ -41,47 +62,53 @@ const App = (props) => {
         <Route 
           path="/login" 
           element={
-            props.userLoginNecessary === true 
+            props.isUserLoginNecessary === true 
             ?  <Login/> 
             :  <Home /> 
-            // Sorun cozuldu! 
-            // ONEMLI NOT : Giris yapinca home adresine gitmesi gerekiyor, gidiyor da ancak adres ismi degismiyor ve login olarak kaliyor.
+            // ? props.questionIds.includes(path)
+            // : <ErrorPage/>
+
+            // ONEErrorPage NOT : Giris yapinca home adresine gitmesi gerekiyor, gidiyor da ancak adres ismi degismiyor ve login olarak kaliyor.
             } />
 
         <Route 
           path="/" exact 
-          element={props.userLoginNecessary === false 
+          element={props.isUserLoginNecessary === false 
             ? <Home/> 
             : <Login/> } 
-            errorElement={<ErrorPage/>}/>
+          />
         <Route 
           path="/add" 
-          element={props.userLoginNecessary === false 
+          element={props.isUserLoginNecessary === false 
             ?  <NewPoll />
-            : <Login/> } 
-            errorElement={<ErrorPage/>} />
+            :  <Login/> } 
+        /> 
         <Route 
           path="/leaderboard" 
-          element={ props.userLoginNecessary === false 
+          element={ props.isUserLoginNecessary === false 
             ? <Leaderboard />
             : <Login/> } 
-          errorElement={<ErrorPage/>} />
+           />
         
         <Route 
           path="/question/:id" 
-          element={ props.userLoginNecessary === false 
+          element={ 
+            props.questionIds.includes(path)
             ? <Poll/>
-            : <Login/> 
+            : <ErrorPage/>
             } 
           errorElement={
-            <ErrorPage />
+            <ErrorBoundary />
            } 
          />
         
         <Route 
-          path="/404" 
+          path="/error" 
           element={
-            <ErrorPage />
+            // props.isUserLoginNecessary === false 
+            // ?
+             <ErrorPage />
+            // : <Login/>
            } 
         />
         </Routes> 
@@ -90,20 +117,12 @@ const App = (props) => {
   )
 };
 
-const mapStateToProps = ({authedUser, questions}, props ) => { 
+const mapStateToProps = ({authedUser, questions}, prop ) => ({ 
   
-  // const { id } = props.router.params;
-  // const question = questions[id];
-  // const {abc} = props.router.location.pathname;
-
-  return {
-    userLoginNecessary : authedUser === null,
-    // id,
+    isUserLoginNecessary : authedUser === null,
     questions,
-    // question,
-    // doesQuestionExist : props.questions.includes(id)
-  }
-}
+    questionIds : Object.values(questions).map((q) => q.id),
+})
 
-// export default withRouter(connect(mapStateToProps)(App))
-export default connect(mapStateToProps)(App)
+export default withRouter(connect(mapStateToProps)(App))
+// export default connect(mapStateToProps)(App)

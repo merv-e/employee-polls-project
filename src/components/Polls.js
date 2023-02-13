@@ -1,18 +1,14 @@
 import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
 import { useNavigate} from "react-router-dom";
+import PollPage from "./PollPage";
 
 const Polls = (props) => {
   
   const navigate = useNavigate();
-
-  const showPoll = (e, id) => {
-    e.preventDefault();
-    navigate(`/question/${props.id}`); 
-  };
-    
+  
   const {author, name, timestamp} = props.question;
-    
+  
   return (
       <div>
         <p>{author}</p>
@@ -20,7 +16,7 @@ const Polls = (props) => {
         <p>{timestamp}</p>
         <button
           className="btn btn-secondary" 
-          onClick={(e, id) => showPoll(e, id)}>
+          onClick={(e, id) => props.id &&navigate(`/question/${props.id}`)}>
           Show poll
         </button>
     </div>
@@ -32,6 +28,7 @@ const mapStateToProps = ({authedUser, users, questions}, prop) => { //we can use
     
     return {
         question: formattedQuestion(question, users[question.author], authedUser),
+        prop
     }
 };
 

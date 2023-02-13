@@ -1,6 +1,6 @@
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
-function calculatePercentage(numberOfVotesPerOption, total) {
+export function calculatePercentage(numberOfVotesPerOption, total) {
     if (numberOfVotesPerOption !== 0 && total !==0) {
         return (100 * numberOfVotesPerOption/total).toFixed() + "%" ;
       }
