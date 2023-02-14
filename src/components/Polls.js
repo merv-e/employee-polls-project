@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { formattedQuestion } from "../utils/helpers";
 import { useNavigate} from "react-router-dom";
-import PollPage from "./PollPage";
 
 const Polls = (props) => {
   

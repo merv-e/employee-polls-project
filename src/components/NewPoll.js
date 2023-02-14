@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {handleAddQuestion} from '../actions/questions'
 // import { withRouter } from "../utils/helpers";
@@ -51,17 +51,17 @@ const NewPoll = (props) => {
   )
 }
 
-// const mapStateToProps = ({authedUser, questions, users }, props) => {
+const mapStateToProps = ({authedUser, questions, users }, props) => {
 
-//   const { id } = props.router.params;
-//   const question = questions[id];
+  // const { id } = props.router.params;
+  // const question = questions[id];
 
-//   return {
-//     id,
-//     authedUser,
-//   }
+  return {
+    // id,
+    authedUser,
+  }
   
-// };
+};
 
 // export default withRouter(connect(mapStateToProps)(NewPoll))
-export default NewPoll
+export default connect(mapStateToProps)(NewPoll)
