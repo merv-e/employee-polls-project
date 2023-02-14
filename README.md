@@ -1,18 +1,24 @@
-# Getting Started with Create React App
+# Employee Poll Project
+
+* In this project, you can use the user passwords and username to login. 
+* After logged in, the app allows you to create new polls as well as voting for polls that are already created. 
+* You can also check the leaderboard to see which user answered/created the polls more. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## How to run the project 
 
-In the project directory, you can run:
+In order to run the project:
 
-### `npm start`
+ `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+<!-- The information on this page  will be updated after unit tests are created (after this point) ! -->
 
 ### `npm test`
 
