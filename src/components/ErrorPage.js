@@ -1,16 +1,6 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const ErrorPage = (props) => {
-
-  // useEffect(()=> {
-  //   setTimeout(() => {
-  //     if(props.authedUser) {
-  //       Navigate("/login")
-  //     }
-  //   }, 1000);
-  // }, []);
 
   const navigate = useNavigate();
 
@@ -19,18 +9,13 @@ const ErrorPage = (props) => {
   }
   
   return (
-    <div>
+    <div className="center">
       <h1 className="center">
-        Oooops! Wrong page. You will be redirected to Login Page.
+        Oooops! This poll doesn't exist. Click the button below to go back to home!
       </h1>
       <button onClick={goToHomePage }>Go to Homepage</button>
     </div>
   )
 }
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser,
-});
-
-
-export default connect()(ErrorPage)
+export default (ErrorPage)

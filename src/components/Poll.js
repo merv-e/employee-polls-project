@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Navigate, useRouteError } from "react-router-dom";
+import { Navigate, useRouteError, Redirect, useRoutes } from "react-router-dom";
 import handleSaveAnswer from "../actions/users";
 import { formattedQuestion, withRouter } from "../utils/helpers";
 import ErrorPage from "./ErrorPage";
@@ -8,10 +8,10 @@ import { calculatePercentage } from "../utils/helpers";
 
 const Poll = (props) => { 
 
-  if(props.authedUser === null ){
-    <alert>You need to login first!</alert>;
-      Navigate("/")
-  };
+  // if(props.authedUser === null ){
+  //   <alert>You need to login first!</alert>;
+  //     Navigate("/")
+  // };
 
   // const ErrorBoundary = () => {
   //   let error = useRouteError();
@@ -20,10 +20,20 @@ const Poll = (props) => {
   //   return <div>Dang!</div>;
   // };
 
+  const errorRoute = useRoutes([
+    { path: '/error', element: <ErrorPage /> },
+  ]);
+  
   // const doesQuestionExist = props.questionIds.includes(props.qid);
-
+  const path = props.router.location.pathname.replace("/question/", "");
 
   const {dispatch, authedUser, question, qid } = props; 
+
+   if ( props.qid === undefined || question === undefined )  {
+      return (
+      <Navigate to="/error" replace={true}/>
+      )
+  }   
 
   // const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne, percentageOptionOne, percentageOptionTwo} = props.questionAndUserInfo;
 
@@ -61,15 +71,11 @@ const Poll = (props) => {
     dispatch(handleSaveAnswer({
       authedUser, 
       qid,  
-      answer: "optionTwo" 
+      answer: "optionTwo"  
     }))
   };
 
   return (
-    <>
-    {/* { (props.qid === undefined || question === undefined ) 
-    ? <ErrorPage/>
-    : ( */}
     <div className="poll">
         <h1>Would you rather</h1>
         <img src={avatarURL} alt={`Avatar of ${question.author}`} className="avatar"/>
@@ -116,10 +122,6 @@ const Poll = (props) => {
             )
         }
     </div>
-    {/* )
-  } */}
-    
-  </>
   )
 };
 

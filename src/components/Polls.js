@@ -16,7 +16,7 @@ const Polls = (props) => {
         <p>{timestamp}</p>
         <button
           className="btn btn-secondary" 
-          onClick={(e, id) => props.id &&navigate(`/question/${props.id}`)}>
+          onClick={(e, id) => props.id && navigate(`/question/${props.id}`)}>
           Show poll
         </button>
     </div>

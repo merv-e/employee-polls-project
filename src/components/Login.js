@@ -22,10 +22,18 @@ const Login = (props) => {
 
     if (user) {
       dispatch(setAuthedUser(username));
-      //eger adres cubugunda bi link yazılıysa question-question_id gibi---  bizi error page'e gotursun, yoksa ana sayfaya gitsin
-    //   if (props.x) navigate("/");
+      
+      //if the pathname is /login redirect to the homepage
+      if (props.path === "/login") {
+        navigate("/");
+      }
+
+      //if the user tries to access a question it's going to be checked whether that id is in our fake database.
+      else if(!props.questionIds.includes(props.path)){
+        navigate("/error");
+      }
     }
-    
+
     else alert("Incorrect password or username");
 
     setUserName("");
@@ -33,7 +41,7 @@ const Login = (props) => {
   
   dispatch(hideLoading());
   };
-  
+
   return (
     <div className="login-page">
       <img
@@ -65,20 +73,20 @@ const Login = (props) => {
   )
 };
 
-  const mapStateToProps = ({users}, props) => {
-
-  const {x} = props.router.location.pathname 
-  //!== id;
+  const mapStateToProps = ({users, questions}, props) => {
 
     const userInfo = Object.values(users)
     .map(u => ({
       id: u.id,
       password: u.password
-    }))
+    }));
+
+const path = props.router.location.pathname.replace("/question/", "");
 
     return {
       userInfo,
-      x
+      questionIds : Object.values(questions).map((q) => q.id),
+      path
     };
 };
 
