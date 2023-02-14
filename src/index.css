@@ -132,3 +132,11 @@ ul {
   /* margin: 30px; */
     gap: 30px;  
 }
+
+.error-page {
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import NavLogout from "./NavLogout"
+// import NavLogout from "./NavLogout"
+import {logOut} from "../actions/authedUser"
 
 const Nav = (props) => { 
   
@@ -14,8 +15,12 @@ const Nav = (props) => {
       color: "black",
   };
 
+  const handleLogout = ({dispatch}) => {
+    dispatch(logOut(authedUser));
+  };
+
   return (
-    <div className="navbar">
+    <nav  className="navbar">
     {
       authedUser === null 
       ? null
@@ -38,11 +43,24 @@ const Nav = (props) => {
           style={style}>Leaderboard</Link>
         </li>
       </ul>
-      <NavLogout style= {style}/>      {/* Normalde bu element div'in altinda ve baska bir div'in icinde idi. */}
+
+    <div style={{paddingRight: "10px"}}>
+      <ol>
+        <li>
+          <p>{authedUser}</p>
+        </li>
+        <li>
+          <Link 
+          to="/login" 
+          style={style}
+          onClick={handleLogout}>Logout</Link>
+        </li>
+      </ol>
+  </div>  
     </div>
         )
       }
-    </div>
+    </nav>
   );
 };
 

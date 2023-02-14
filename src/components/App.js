@@ -64,9 +64,9 @@ const App = (props) => {
         
         <Route 
           path="/error/*" 
-          element={
-             <ErrorPage />
-           } 
+          element={ 
+           <ErrorPage />
+            } 
         />
         </Routes> 
       </div>

@@ -19,33 +19,10 @@ const Login = (props) => {
   
   const user = authentification.find(user => user);
 
-  // const routes = useRoutes([
-  //   {
-  //     path: "/",
-  //     element: <Home />,
-  //   },
-  //   {
-  //     path: "/leaderboard",
-  //     element: <Leaderboard />,
-  //   },
-  //   { path: "/new", element: <NewPoll /> }
-  // ]);
-
-  // const routes = ["/", "/login", "/leaderboard", "new"];
-
-  // const doesTheRouteMatch = routes.filter(route => route === props.path) !== []; 
-  // console.log(Object.keys(routes).map(x=>x)); 
-  // console.log("routes are:", routes);
-  // console.log(routes.filter(route => route !== props.path));
-  // console.log(doesTheRouteMatch);
-  // console.log(props.path);
-
   //if the pathname is /login redirect to the homepage
   if (props.path === "/login") {
     navigate("/");
   }
-  
-  // && !props.questionIds.includes(props.path)
   
   const handleSubmit = (e) => { 
     e.preventDefault();
@@ -53,13 +30,6 @@ const Login = (props) => {
     
     if (user) {
       dispatch(setAuthedUser(username));
-      
-      
-      //if the user tries to access a question it's going to be checked whether that id is in our fake database.
-      // if(doesTheRouteMatch === false){
-      //   navigate("/error");
-      // }
-      
     }
 
     else alert("Incorrect password or username");
