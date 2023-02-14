@@ -20,12 +20,12 @@ const Nav = (props) => {
   };
 
   return (
-    <nav  className="navbar">
+    <nav>
     {
       authedUser === null 
       ? null
       : (
-    <div>
+    <div className="navbar">
       <ul>
         <li>
           <Link to="/" style={style}>Home</Link>
@@ -45,7 +45,7 @@ const Nav = (props) => {
       </ul>
 
     <div style={{paddingRight: "10px"}}>
-      <ol>
+      <ul>
         <li>
           <p>{authedUser}</p>
         </li>
@@ -55,7 +55,7 @@ const Nav = (props) => {
           style={style}
           onClick={handleLogout}>Logout</Link>
         </li>
-      </ol>
+      </ul>
   </div>  
     </div>
         )

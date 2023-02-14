@@ -24,20 +24,6 @@ const Poll = (props) => {
  
   const percentageOptionOne= calculatePercentage(votesForOptionOne.length, total);
   const percentageOptionTwo= calculatePercentage(votesForOptionTwo.length, total);
-
-  /* The info below comes from questionAndUserInfo, however it can not be used atm.  */
-
-  //  const {
-  //     author,  
-  //     name, 
-  //     avatar, 
-  //     text1, 
-  //     text2, 
-  //     votesForOptionTwo, 
-  //     votesForOptionOne, 
-  //     percentageOptionOne, 
-  //     percentageOptionTwo
-  //   } = props.questionAndUserInfo;
   
   const chooseOptionOne = (e) => { 
     dispatch(handleSaveAnswer({

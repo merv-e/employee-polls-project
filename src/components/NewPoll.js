@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { connect } from "react-redux";
-import { showLoading } from "react-redux-loading-bar";
-import { Navigate, useNavigate } from "react-router-dom";
-import { logOut } from "../actions/authedUser";
+// import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {handleAddQuestion} from '../actions/questions'
-import { withRouter } from "../utils/helpers";
+// import { withRouter } from "../utils/helpers";
 
 const NewPoll = (props) => {
 
@@ -28,7 +26,7 @@ const NewPoll = (props) => {
     };
 
   return (
-    <div className="poll">
+    <div className="form-poll">
         <h2>Would you rather</h2>
         <form className="form-poll" onSubmit={handleSubmit}>
           <input 
@@ -53,16 +51,17 @@ const NewPoll = (props) => {
   )
 }
 
-const mapStateToProps = ({authedUser, questions, users }, props) => {
+// const mapStateToProps = ({authedUser, questions, users }, props) => {
 
-  const { id } = props.router.params;
-  // const question = questions[id];
+//   const { id } = props.router.params;
+//   const question = questions[id];
 
-  return {
-    id,
-    authedUser,
-  }
+//   return {
+//     id,
+//     authedUser,
+//   }
   
-};
+// };
 
-export default withRouter(connect(mapStateToProps)(NewPoll))
+// export default withRouter(connect(mapStateToProps)(NewPoll))
+export default NewPoll
