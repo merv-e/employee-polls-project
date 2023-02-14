@@ -20,6 +20,11 @@ You may also see any lint errors in the console.
 
 <!-- The information on this page  will be updated after unit tests are created (after this point) ! -->
 
+#### Sources of the images that are being used in this project are :
+
+- [avatars for this project]( https://www.freepik.com/free-vector/hand-drawn-people-avatar-collection_5183184.htm#query=avatar&position=19&from_view=keyword )
+- [the image at login page](https://ar.pinterest.com/pin/366761963413325296/)
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
