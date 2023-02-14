@@ -8,13 +8,11 @@ const Nav = (props) => {
 
   const avatar= userObject.filter(user => user.id === authedUser)
     .map(user => user.avatarURL);
-  // .join("").toString()
-  // console.log(avatar);
 
-    const style = {
-        textDecoration: 'none',
-        color: "black",
-    };
+  const style = {
+      textDecoration: 'none',
+      color: "black",
+  };
 
   return (
     <div className="navbar">

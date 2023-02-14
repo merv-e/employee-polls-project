@@ -7,17 +7,8 @@ import {handleAddQuestion} from '../actions/questions'
 import { withRouter } from "../utils/helpers";
 
 const NewPoll = (props) => {
-  // if(props.authedUser === null) {
-  //   Navigate("/404");
-  // };
 
   const navigate = useNavigate();
-  
-  if(props.authedUser === null) {
-    // alert("You need to login first!")
-    // props.dispatch(logOut);
-    navigate("/login");
-}
 
   const [firstOption, setFirstOption] = useState("");
   const [secondOption, setSecondOption] = useState("");
@@ -65,7 +56,7 @@ const NewPoll = (props) => {
 const mapStateToProps = ({authedUser, questions, users }, props) => {
 
   const { id } = props.router.params;
-  const question = questions[id];
+  // const question = questions[id];
 
   return {
     id,

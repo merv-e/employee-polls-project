@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logOut } from "../actions/authedUser";
 
 const NavLogout = ({style, authedUser}) => {

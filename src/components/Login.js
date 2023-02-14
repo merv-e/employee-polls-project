@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRoutes } from "react-router-dom";
 import loginImg from "../images/employee-poll.png";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {setAuthedUser} from "../actions/authedUser"
 import { withRouter } from "../utils/helpers";
+import Home from "./Home";
+import Leaderboard from "./Leaderboard";
+import NewPoll from "./NewPoll";
 
 const Login = (props) => {
   
@@ -16,22 +19,47 @@ const Login = (props) => {
   
   const user = authentification.find(user => user);
 
+  // const routes = useRoutes([
+  //   {
+  //     path: "/",
+  //     element: <Home />,
+  //   },
+  //   {
+  //     path: "/leaderboard",
+  //     element: <Leaderboard />,
+  //   },
+  //   { path: "/new", element: <NewPoll /> }
+  // ]);
+
+  // const routes = ["/", "/login", "/leaderboard", "new"];
+
+  // const doesTheRouteMatch = routes.filter(route => route === props.path) !== []; 
+  // console.log(Object.keys(routes).map(x=>x)); 
+  // console.log("routes are:", routes);
+  // console.log(routes.filter(route => route !== props.path));
+  // console.log(doesTheRouteMatch);
+  // console.log(props.path);
+
+  //if the pathname is /login redirect to the homepage
+  if (props.path === "/login") {
+    navigate("/");
+  }
+  
+  // && !props.questionIds.includes(props.path)
+  
   const handleSubmit = (e) => { 
     e.preventDefault();
-    dispatch(showLoading());
-
+    dispatch(showLoading()); 
+    
     if (user) {
       dispatch(setAuthedUser(username));
       
-      //if the pathname is /login redirect to the homepage
-      if (props.path === "/login") {
-        navigate("/");
-      }
-
+      
       //if the user tries to access a question it's going to be checked whether that id is in our fake database.
-      else if(!props.questionIds.includes(props.path)){
-        navigate("/error");
-      }
+      // if(doesTheRouteMatch === false){
+      //   navigate("/error");
+      // }
+      
     }
 
     else alert("Incorrect password or username");

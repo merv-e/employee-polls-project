@@ -1,31 +1,10 @@
 import { connect } from "react-redux";
-import { Navigate, useRouteError, Redirect, useRoutes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import handleSaveAnswer from "../actions/users";
-import { formattedQuestion, withRouter } from "../utils/helpers";
-import ErrorPage from "./ErrorPage";
+import { withRouter } from "../utils/helpers";
 import { calculatePercentage } from "../utils/helpers";
 
-
 const Poll = (props) => { 
-
-  // if(props.authedUser === null ){
-  //   <alert>You need to login first!</alert>;
-  //     Navigate("/")
-  // };
-
-  // const ErrorBoundary = () => {
-  //   let error = useRouteError();
-  //   console.error(error);
-  //   // Uncaught ReferenceError: path is not defined
-  //   return <div>Dang!</div>;
-  // };
-
-  const errorRoute = useRoutes([
-    { path: '/error', element: <ErrorPage /> },
-  ]);
-  
-  // const doesQuestionExist = props.questionIds.includes(props.qid);
-  const path = props.router.location.pathname.replace("/question/", "");
 
   const {dispatch, authedUser, question, qid } = props; 
 
@@ -34,18 +13,6 @@ const Poll = (props) => {
       <Navigate to="/error" replace={true}/>
       )
   }   
-
-  // const {author, name, avatar, text1, text2, qid, votesForOptionTwo, votesForOptionOne, percentageOptionOne, percentageOptionTwo} = props.questionAndUserInfo;
-
-  // if ( props.qid === undefined && question === undefined && question.author === undefined && props.optionOne === undefined && props.optionTwo === undefined) {
-  //   // (<ErrorPage/>))
-  //    ErrorBoundary();
-  // };
-
-  // console.log(doesQuestionExist);
-  // console.log(props.qid);
-  // console.log(question);
-
   const votesForOptionOne = question.optionOne.votes;
   const votesForOptionTwo = question.optionTwo.votes;
   const total  = votesForOptionOne.length + votesForOptionTwo.length;
@@ -56,8 +23,21 @@ const Poll = (props) => {
   const {name, avatarURL } = props.users[question.author]; 
  
   const percentageOptionOne= calculatePercentage(votesForOptionOne.length, total);
-
   const percentageOptionTwo= calculatePercentage(votesForOptionTwo.length, total);
+
+  /* The info below comes from questionAndUserInfo, however it can not be used atm.  */
+
+  //  const {
+  //     author,  
+  //     name, 
+  //     avatar, 
+  //     text1, 
+  //     text2, 
+  //     votesForOptionTwo, 
+  //     votesForOptionOne, 
+  //     percentageOptionOne, 
+  //     percentageOptionTwo
+  //   } = props.questionAndUserInfo;
   
   const chooseOptionOne = (e) => { 
     dispatch(handleSaveAnswer({
@@ -82,13 +62,13 @@ const Poll = (props) => {
         <h3>A Poll by {question.author}</h3>
         <span><i>{name}</i></span>
         {
-          question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
+          votesForOptionOne.includes(authedUser) || votesForOptionTwo.includes(authedUser)
           ? (
             <div className="options">
               <div className="option">
                 <p>{text1}</p>
                 <button 
-                 className={ question.optionOne.votes.includes(authedUser) ? "btn btn-danger" : "btn"}
+                 className={ votesForOptionOne.includes(authedUser) ? "btn btn-danger" : "btn"}
                  disabled>
                  Choose
                  </button>
@@ -99,7 +79,7 @@ const Poll = (props) => {
               <div className="option">
                 <p>{text2}</p>
                 <button 
-                 className={ props.question.optionTwo.votes.includes(authedUser) ? "btn btn-danger"  : "btn" }
+                 className={ votesForOptionTwo.includes(authedUser) ? "btn btn-danger"  : "btn" }
                  disabled>
                  Choose
                  </button>
@@ -134,12 +114,9 @@ const mapStateToProps = ({authedUser, questions, users }, props) => {
     qid : id,
     authedUser,
     question,
-    // questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
-    // questions,
     users,
-    // questionIds: Object.values(questions).map((q) => q.id),
+    // questionAndUserInfo: formattedQuestion(question, users[question.author], authedUser),
   }
-  
 };
 
 export default withRouter(connect(mapStateToProps)(Poll))

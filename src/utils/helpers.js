@@ -53,8 +53,6 @@ export function formattedQuestion (question, user, authedUser) {
     answersOfUser : user.answers,
     questionsOfUser : user.questions, 
 
-    /* TODO : calculate percentage later. */
-    // hasUserVoted: votes.includes(authedUser),
     }
   }
 

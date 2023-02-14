@@ -29,7 +29,9 @@ const App = (props) => {
         <Route 
           path="/login/*" 
           element={
-            props.isUserLoginNecessary === true && <Login/> 
+            props.isUserLoginNecessary === true 
+            ? <Login/>
+            : <Home/>
             } />
 
         <Route 
@@ -39,13 +41,13 @@ const App = (props) => {
             : <Login/> } 
           />
         <Route 
-          path="/add" 
+          path="/add/*" 
           element={props.isUserLoginNecessary === false 
             ?  <NewPoll />
             :  <Login/> } 
         /> 
         <Route 
-          path="/leaderboard" 
+          path="/leaderboard/*" 
           element={ props.isUserLoginNecessary === false 
             ? <Leaderboard />
             : <Login/> } 

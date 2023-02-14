@@ -4,11 +4,6 @@ import { Navigate } from "react-router-dom";
 
 const Leaderboard = (props) => {
 
-  if(props.authedUser === null) {
-    // Navigate("/404");
-    // Navigate("/login")
-  }
-
   return (
     <div className="leaderboard-table" >
       <Table responsive> 
