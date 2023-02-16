@@ -16,6 +16,7 @@ const Polls = (props) => {
         <button
           className="btn btn-secondary" 
           onClick={(e, id) => props.id && navigate(`/question/${props.id}`)}>
+          {/* question -- questions olarak degistirilecek! */}
           Show poll
         </button>
     </div>
