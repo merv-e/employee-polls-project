@@ -171,7 +171,6 @@ export function _saveQuestion (question) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
     
-    // const authedUser = question.author;
     const formattedQuestion = formatQuestion(question)
     setTimeout(() => {
       questions = {
@@ -212,19 +211,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-
       resolve(true)
     }, 500)
   })
 }
 
-
-    // if (!qid) {
-    //   reject("Please provide qid");
-    // }
-    // else if (!authedUser) {
-    //   reject("Please provide authedUser");
-    // }
-    // else if (!answer) {
-    //   reject("Please provide answer");
-    // };
+// module.exports = _saveQuestion;
+// module.exports = _saveQuestionAnswer;

@@ -14,7 +14,3 @@ export function logOut(id) {
         id,
     }
 };
-
-// export function handleLogout(id) {
-//     return
-// }
