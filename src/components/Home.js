@@ -46,7 +46,7 @@ const Home = (props) => {
               id={qId} 
               />
             </li>
-        )}n
+        )}
         </ul>
 
       )

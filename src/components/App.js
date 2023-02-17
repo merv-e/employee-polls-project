@@ -54,7 +54,7 @@ const App = (props) => {
            />
         
         <Route 
-          path="/question/:id/*" 
+          path="/questions/:id/*" 
           element={ 
             props.isUserLoginNecessary === false 
             ? <Poll/>
