@@ -75,6 +75,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({authedUser}, prop ) => ({ 
+  
     isUserLoginNecessary : authedUser === null,
 })
 
