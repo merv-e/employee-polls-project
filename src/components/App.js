@@ -10,7 +10,7 @@ import NewPoll from "./NewPoll";
 import Poll from "./Poll";
 import Nav from "./Nav"
 import ErrorPage from "./ErrorPage";
-import { withRouter } from "../utils/helpers";
+// import { withRouter } from "../utils/helpers";
 
 
 const App = (props) => {
@@ -80,4 +80,4 @@ const mapStateToProps = ({authedUser}, prop ) => ({
 })
 
 //TODO : check if it's still necessary to connect the router.
-export default withRouter(connect(mapStateToProps)(App))
+export default connect(mapStateToProps)(App)
