@@ -9,6 +9,7 @@ const Leaderboard = (props) => {
       <Table responsive> 
         <thead style={{textAlign: "center"}}>
           <tr>
+            <th>Avatar</th>
             <th>Username</th>
             <th>Answered Polls</th>
             <th>Created Polls</th>
