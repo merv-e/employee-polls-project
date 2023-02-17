@@ -1,5 +1,7 @@
-const { async } = require("q");
-const {_saveQuestion, _saveQuestionAnswer} = require("./_DATA");
+// const { describe } = require("@jest/globals");
+// const { async } = require("q");
+
+const { _saveQuestion, _saveQuestionAnswer} = require("../utils/_DATA");
 
 //tests for saving a poll
 describe("_saveQuestion", () => {
@@ -20,6 +22,7 @@ describe("_saveQuestion", () => {
         });
         await expect(result).rejects.toEqual("Please provide optionOneText, optionTwoText, and author");
     });
+
 });
 
 //tests for saving an answer to a poll 
@@ -42,3 +45,4 @@ describe("_saveQuestionAnswer", () => {
         await expect(result).rejects.toMatch("Please provide authedUser, qid, and answer");
     });
 });
+
