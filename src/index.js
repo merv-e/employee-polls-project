@@ -10,7 +10,7 @@ import middleware from "./middleware";
 import { BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore(reducer, middleware); //when middleware is at the beginning, we get an error, why?
+export const store = createStore(reducer, middleware); //when middleware is at the beginning, we get an error, why?
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
