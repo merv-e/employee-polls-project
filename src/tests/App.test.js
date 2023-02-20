@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import App from "../components/App";
-import {store} from "../index";
-import { createRenderer } from 'react-dom/test-utils';
+import {store} from "../store"; //store.js'den al :)
+// import { createRenderer } from 'react-dom/test-utils';
 
 
 test('renders learn react link', () => {
@@ -13,5 +13,5 @@ test('renders learn react link', () => {
   );
     // screen.debug();
   // const linkElement = screen.getByText(/add/i);
-  expect(screen.queryByText(/?/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/hello/i)).not.toBeInTheDocument();
 });

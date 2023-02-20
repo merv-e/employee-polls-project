@@ -3,7 +3,8 @@ import *as React from "react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import NewPoll from "../components/NewPoll";
-import store from "../index";
+// import store from "../index"; //store.js'den al :)
+import {store} from "../store";
 
 // test("should have the expected form elements", ()=> {
 //         const utils = render(

@@ -1,17 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 import Leaderboard from '../components/Leaderboard';
-import {store} from "../index";
+// import {store} from "../index"; store.js'den al :)
+import {store} from "../store";
 
 
-
-test('renders learn react link', () => {
+describe("Leaderboard", () => {
+  it('if the username exist', () => {
     const {getByText} = render(
-  <Provider store={store}>
-    render(<Leaderboard />);
-  </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <Leaderboard />;
+        </Provider>
+      </MemoryRouter>
   );
-    // screen.debug();
-  // const linkElement = screen.getByText(/add/i);
-  expect(screen.getByText(/tylermcginnis/i)).toBeInTheDocument();
-});
+  expect(getByText(/username/i)).toBeInTheDocument();
+}); 
+})
