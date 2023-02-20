@@ -29,7 +29,7 @@ const NewPoll = (props) => {
     <div className="form-poll">
         <h2>Would you rather</h2>
         <form className="form-poll" onSubmit={handleSubmit}>
-          {/* <label for="fOption">First Option</label> */}
+          <label htmlFor="fOption">First Option</label>
           <input
            name="fOption" 
            value={firstOption}
@@ -38,16 +38,17 @@ const NewPoll = (props) => {
            placeholder="Please write down your first option"
            />
           
-          {/* <label for="sOption">
-          Second Option</label> */}
+          <label htmlFor="secOption">
+          Second Option</label>
           <input 
-           name="sOption" 
+           name="secOption" 
            value={secondOption}
-           data-testid="second-option"
+           data-testid="second-option-input"
            onChange={(ev) => setSecondOption(ev.target.value)} 
            placeholder="Please write down your second option"
            />
           <button
+           data-testid = "submitBtn"
            type="submit" 
            className="btn" 
            onClick={handleSubmit} 
