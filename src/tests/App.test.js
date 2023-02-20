@@ -1,17 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import App from "../components/App";
-import {store} from "../store"; //store.js'den al :)
-// import { createRenderer } from 'react-dom/test-utils';
+import {store} from "..//store"; 
+import { MemoryRouter } from 'react-router';
 
+//if there is only one test - use "test" , else "describe"
 
-test('renders learn react link', () => {
-    const {getByText} = render(
-  <Provider store={store}>
-    render(<App />);
-  </Provider>
+// Note: just a random test
+test('the string "hello" won\'t be in the App component', () => {
+    const {queryByText} = render(
+      <MemoryRouter>
+        <Provider store={store}>
+          render(<App />);
+        </Provider>
+      </MemoryRouter>
   );
-    // screen.debug();
-  // const linkElement = screen.getByText(/add/i);
-  expect(screen.queryByText(/hello/i)).not.toBeInTheDocument();
+    
+  expect(queryByText(/hello/i)).not.toBeInTheDocument();
 });
