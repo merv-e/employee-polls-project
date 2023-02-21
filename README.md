@@ -4,6 +4,21 @@
 * After logged in, the app allows you to create new polls as well as voting for polls that are already created. 
 * You can also check the leaderboard to see which user answered/created the polls more. 
 
+# Username and password that can be used in the project
+```
+    username: 'sarahedo',
+    password:'password123',
+
+    username: 'tylermcginnis',
+    password:'abc321',
+
+    username: 'mtsamis',
+    password:'xyz123',
+
+    username: 'zoshikanlu',
+    password:'pass246'
+```
+
 ## How to install the project 
 To install the project you can use the code down below:
 
