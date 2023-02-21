@@ -1,36 +1,60 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen , getByTestId, fireEvent} from "@testing-library/react";
 import *as React from "react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
+import { handleAddQuestion } from "../actions/questions";
 import NewPoll from "../components/NewPoll";
 import {store} from "../store";
-
-    test ("should take a screenshot of the page", () => {
-        const utils = render(
-            <Provider store={store}>
-                <MemoryRouter>
-                    <NewPoll />
-                </MemoryRouter>
-            </Provider>
-        );
-        
-        expect(utils).toMatchSnapshot();
-    });
     
-    // describe("NewPoll", ()=> {
-        //     it('should have the expected form elements', () => {
-            //         const utils = render(
-                //             // <MemoryRouter>
-                //             //     <Provider store={store}>
-                //                     <NewPoll />
-                //             //     </Provider>
-//             // </MemoryRouter>
-//         );
+    describe("NewPoll", ()=> {
+        it('should take a screenshot', () => {
+            const utils = render(
+                <MemoryRouter>
+                    <Provider store={store}>
+                        <NewPoll />
+                   </Provider>
+                </MemoryRouter>
+            );
 
-// expect(getByTestId("first-option-input")).toBeInTheDocument();
+            expect(utils).toMatchSnapshot();
+            
+        });
+        
+        it('should have the expected form elements', () => {
+            const utils = render(
+                <MemoryRouter>
+                    <Provider store={store}>
+                        <NewPoll />
+                   </Provider>
+                </MemoryRouter>
+            );
 
-// const fOption = screen.getByTestId("first-option-input")
-// expect(fOption).toBeInTheDocument();
+        const firstOp = utils.getByTestId("first-option-input");
 
-//     });
-// });
+        const secondOp = utils.getByTestId("second-option-input");
+
+        const submitButton = utils.getByTestId("submitBtn");
+
+        expect(firstOp).toBeInTheDocument();
+
+        expect(secondOp).toBeInTheDocument();
+
+        expect(submitButton).toBeInTheDocument();
+
+    });
+});
+    // fireEvent haric digerleri testlerden geciyor. Ancak snapshot gecmiyor degistigi icin veriler
+    // const {authedUser} = store.getState();
+    
+    // fireEvent.change(store.dispatch(
+    //     handleAddQuestion({
+    //     optionOneText: "React",
+    //     optionTwoText: "Angular",
+    //     author: authedUser,
+    //     })
+    //  ))
+    
+    // fireEvent.click(submitButton);
+    
+    // const fOption = screen.getByTestId("first-option-input")
+    // expect(fOption).toBeInTheDocument();

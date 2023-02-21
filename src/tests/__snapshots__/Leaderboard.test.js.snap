@@ -1,92 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NewPoll should take a screenshot 1`] = `
+exports[`should take a screenshot of the leaderboard page based on updated info of the store 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="form-poll"
+        class="leaderboard-table"
       >
-        <h2>
-          Would you rather
-        </h2>
-        <form
-          class="form-poll"
+        <div
+          class="table-responsive"
         >
-          <label
-            for="fOption"
+          <table
+            class="table"
           >
-            First Option
-          </label>
-          <input
-            data-testid="first-option-input"
-            name="fOption"
-            placeholder="Please write down your first option"
-            value=""
-          />
-          <label
-            for="secOption"
-          >
-            Second Option
-          </label>
-          <input
-            data-testid="second-option-input"
-            name="secOption"
-            placeholder="Please write down your second option"
-            value=""
-          />
-          <button
-            class="btn"
-            data-testid="submitBtn"
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
+            <thead
+              style="text-align: center;"
+            >
+              <tr>
+                <th>
+                  Avatar
+                </th>
+                <th>
+                  Username
+                </th>
+                <th>
+                  Answered Polls
+                </th>
+                <th>
+                  Created Polls
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="center"
+            />
+          </table>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="form-poll"
+      class="leaderboard-table"
     >
-      <h2>
-        Would you rather
-      </h2>
-      <form
-        class="form-poll"
+      <div
+        class="table-responsive"
       >
-        <label
-          for="fOption"
+        <table
+          class="table"
         >
-          First Option
-        </label>
-        <input
-          data-testid="first-option-input"
-          name="fOption"
-          placeholder="Please write down your first option"
-          value=""
-        />
-        <label
-          for="secOption"
-        >
-          Second Option
-        </label>
-        <input
-          data-testid="second-option-input"
-          name="secOption"
-          placeholder="Please write down your second option"
-          value=""
-        />
-        <button
-          class="btn"
-          data-testid="submitBtn"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
+          <thead
+            style="text-align: center;"
+          >
+            <tr>
+              <th>
+                Avatar
+              </th>
+              <th>
+                Username
+              </th>
+              <th>
+                Answered Polls
+              </th>
+              <th>
+                Created Polls
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="center"
+          />
+        </table>
+      </div>
     </div>
   </div>,
   "debug": [Function],

@@ -43,6 +43,7 @@ const Login = (props) => {
   return (
     <div className="login-page">
       <img
+       data-testid="login-avatar"
        className="loginImg" 
        src={loginImg} 
        alt="Employee polls"
@@ -52,14 +53,17 @@ const Login = (props) => {
        onSubmit={handleSubmit} >
         <input 
          value={username}
+         data-testid="login-name"
          placeholder="username" type="text"
          onChange={(event) => setUserName(event.target.value)}/>
        <input
+        data-testid="login-password"
         value={password} 
         placeholder="password" 
         type="text"
         onChange={(event) => setPassword(event.target.value)}/>
-        <button 
+        <button
+         data-testid="login-submit"
          type="submit" 
          disabled={
           username === "" || password === ""
