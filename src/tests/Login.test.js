@@ -23,17 +23,12 @@ describe("Login", () => {
     const submitBtn = utils.getByTestId("login-submit");
 
     fireEvent.change(userName, {target: {value: 'zoshikanlu'}});
-
     fireEvent.change(pWord, {target: {value: 'notTheRightPassword'}});
     
-    
     expect(userName.value).toBe("zoshikanlu");
-    
     expect(pWord.value).toBe("notTheRightPassword");
     
     fireEvent.click(submitBtn);
-    
-    //  BURAYA KADAR HER SEY TAMAM :)
     
     //Because a wrong password is given, the user will be still on the login page
     expect(avatar).toBeInTheDocument();
