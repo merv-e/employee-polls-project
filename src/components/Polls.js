@@ -6,17 +6,15 @@ const Polls = (props) => {
   
   const navigate = useNavigate();
   
-  const {author, name, timestamp} = props.question;
+  const {author, timestamp} = props.question;
   
   return (
       <div>
         <p>{author}</p>
-        {/* <span>{name} </span> */}
         <p>{timestamp}</p>
         <button
           className="btn btn-secondary" 
           onClick={(e, id) => props.id && navigate(`/questions/${props.id}`)}>
-          {/* question -- questions olarak degistirilecek! */}
           Show poll
         </button>
     </div>

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Table } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 const Leaderboard = (props) => {
 
