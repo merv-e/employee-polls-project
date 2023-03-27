@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate, useRoutes } from "react-router-dom";
-import loginImg from "../images/employee-poll.png";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {setAuthedUser} from "../actions/authedUser"
 import { withRouter } from "../utils/helpers";
@@ -14,7 +13,7 @@ const Login = (props) => {
   const [username, setUserName] = useState("");
   
   const options = [
-    {value: "", text: "Please choose an option"},
+    {value: "", text: "Please choose a user"},
     {value: "zoshikanlu", text: "zoshikanlu"},
     {value: "tylermcginnis", text: "tylermcginnis"},
     {value: "mtsamis", text: "mtsamis"},
@@ -42,20 +41,19 @@ const Login = (props) => {
   };
 
   return (
-    <>
-      <img
-       data-testid="login-avatar"
-       className="loginImg" 
-       src={loginImg} 
-       alt="Employee polls"
-      />
-
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div 
+    className="login-page"
+    >
+    <div 
+     className="block-container">
+      <form 
+       onSubmit={handleSubmit}
+      >
+      <h5 className="center">Select user</h5>
           <select 
            value={username}
-           className="form-control"
-           id="users"
+           className="login" 
+          //  className="d-grid gap-4"
            onChange={
             (event) => setUserName(event.target.value)} 
            >
@@ -69,14 +67,19 @@ const Login = (props) => {
               </option>
              )}
           </select>
+
+        <div className="d-grid gap-2">
+          <Button 
+          //  className="btn btn-secondary center "
+           variant="secondary"
+           size="block"
+           type="submit"
+           >Submit
+          </Button>
         </div>
-        
-        <Button 
-         type="submit"
-         >Submit
-         </Button>
       </form> 
-    </>
+    </div>
+    </div>
   )
 };
 
