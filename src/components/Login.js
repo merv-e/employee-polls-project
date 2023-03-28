@@ -13,7 +13,7 @@ const Login = (props) => {
   const [username, setUserName] = useState("");
   
   const options = [
-    {value: "", text: "Please choose a user"},
+    {value: "", text: "User"},
     {value: "zoshikanlu", text: "zoshikanlu"},
     {value: "tylermcginnis", text: "tylermcginnis"},
     {value: "mtsamis", text: "mtsamis"},
@@ -48,12 +48,13 @@ const Login = (props) => {
      className="block-container">
       <form 
        onSubmit={handleSubmit}
+      //  className="login"
       >
       <h5 className="center">Select user</h5>
           <select 
            value={username}
           //  className="login" 
-          className="btn btn-secondary login btn-block"
+          className="btn btn-secondary btn-block login center" //
           //  className="d-grid gap-4"
            onChange={
             (event) => setUserName(event.target.value)} 

@@ -30,6 +30,13 @@ li {
   text-align: center;
 }
 
+h5 {
+  color: rgb(143, 157, 166);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+}
 .login-page {
   display: flex;
   flex-direction: column;
@@ -39,7 +46,7 @@ li {
   /* margin: 0;
   padding: 0; */
   /* width: 100vh; */
-  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%); */
+  background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
 }
 
 .block-container {
@@ -48,23 +55,23 @@ li {
   justify-content: center;
   align-items: center;
   border: 2px;
-  border-radius: 30px;
-  height : 60vh;
+  border-radius: 10px;
+  height : 40vh;
   width: 40vh;
   /* transform: translate(50px, 50px); */
   /* padding-bottom: 20px; */
   margin-top: 5%;
-  /* background-color: white; */
-  background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%);
+  background-color: rgb(219, 241, 255);
+  /* background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%); */
 }
 
 .login {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: stretch;  */
+  justify-content: center; 
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   /* background-color: #dfe9eb; */
   /* background-color: grey; */
   /* color: white; */
@@ -81,7 +88,7 @@ li {
 
 .home-page {
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .poll {
@@ -97,7 +104,7 @@ li {
 
 .poll-list{
   border: 1px solid #C6CAED;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px;
   text-align: center;
 }
