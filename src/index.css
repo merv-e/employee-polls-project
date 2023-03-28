@@ -39,32 +39,36 @@ li {
   /* margin: 0;
   padding: 0; */
   /* width: 100vh; */
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%);
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%); */
 }
 
 .block-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   border: 2px;
   border-radius: 30px;
-  height : 50vh;
-  width: 50vh;
-  padding-bottom: 20px;
-  margin-top: 10%;
+  height : 60vh;
+  width: 40vh;
+  /* transform: translate(50px, 50px); */
+  /* padding-bottom: 20px; */
+  margin-top: 5%;
+  /* background-color: white; */
   background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%);
 }
 
 .login {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items:center;
-  justify-content: stretch; 
-  padding: 5px;
+  align-items: center;
+  justify-content: stretch;  */
+  padding: 10px;
   margin-bottom: 20px;
-  background-color: #dfe9eb;
-  border-radius: 10px;
+  /* background-color: #dfe9eb; */
+  /* background-color: grey; */
+  /* color: white; */
+  /* border-radius: 10px; */
 }
 
 .container {

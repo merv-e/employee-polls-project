@@ -52,7 +52,8 @@ const Login = (props) => {
       <h5 className="center">Select user</h5>
           <select 
            value={username}
-           className="login" 
+          //  className="login" 
+          className="btn btn-secondary login btn-block"
           //  className="d-grid gap-4"
            onChange={
             (event) => setUserName(event.target.value)} 
