@@ -23,8 +23,10 @@ const Home = (props) => {
   //the user hasn't been voted yet, therefore the poll will be in the new polls.
   const hasUserNotVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
 
+  /* TODO : make it responsive!!! */
   return (
-    <div className="center poll-container" > 
+    <div className="center poll-page">
+     <div className="poll-container"> 
       <h2 className="center">{poll}</h2> 
     {
        toggle
@@ -70,6 +72,7 @@ const Home = (props) => {
           : null
           } 
         </button> 
+      </div>
     </div>
   )
 };

@@ -13,6 +13,7 @@ code {
     monospace;
 }
 
+/* cant find this one anywhere. Is it deleted? */
 .home-page {
   margin: 0 auto;
   /* padding: 20px; */
@@ -43,7 +44,8 @@ li {
   color: white;
   font-weight: 500;
   padding-top: 10px;
-  height: auto;
+  /* height: 30vh; */
+  font-size: 15px;
 }
 
 .avatar-text-align {
@@ -64,10 +66,6 @@ li {
   align-items: center;
   justify-content:center;
   height: 100vh;
-  /* margin: 0;
-  padding: 0; */
-  /* width: 100vh; */
-  /* background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%); */
 }
 
 .block-container {
@@ -82,6 +80,7 @@ li {
   /* transform: translate(50px, 50px); */
   /* padding-bottom: 20px; */
   margin-top: 5%;
+  margin-bottom: 5%;
   background-color: rgb(219, 241, 255);
 }
 
@@ -90,58 +89,69 @@ h5 {
   display: flex;
   position: relative;
   flex-direction: column;
-  /* justify-content: flex-start; */
 }
 
 .login {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
   justify-content: center; 
-  padding: 10px;
+  /* padding: 10px; */
   margin-bottom: 10px;
-  /* background-color: #dfe9eb; */
-  /* background-color: grey; */
-  /* color: white; */
-  /* border-radius: 10px; */
 }
 
 /* Home */
-
-.poll-container {
+.poll-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
+  /* width: 50%; */
+  /* background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%); */
+  margin-top: 20vh;
+  margin-bottom: 5rem;
 }
 
+.poll-container {
+  background-color: rgb(219, 241, 255);
+  border: 2px rgb(219, 241, 255) solid;
+  border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 80%;
+  padding-bottom: 20px;
+}
 .container {
   display: grid;
-  background-color: red;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 40% 40%; 
+  justify-content: center;
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 2rem;
   border-radius: 10px;
-  background-color: rgb(219, 241, 255);
+  padding: 20px;
+  /* width: 100px;
+  height: 100px; */
+  /* background-color: rgb(219, 241, 255); */
+  font-size: 15px;
 }
 
 .p-polls-text {
   text-align: center;
-  font-size: large;
+  /* font-size: large; */
   display: flex;
   align-self: center;
 }
 
 .poll-list{
-  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  font-size: 100%;
+  /* font-size: 100%; */
   font-weight: 400;
+  /* background-color: #ADA8BE; */
+  /* background-color: rgb(21, 31, 38); */
+  background: linear-gradient(5deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
 }
 
 /* Poll */
@@ -172,7 +182,6 @@ h5 {
 .leaderboard-table {
   display: flex;
   flex-direction: column;
-  /* align-items:center; */
   justify-content: space-between;
   padding: 20px;
   margin: 30px;
@@ -191,15 +200,12 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items:stretch;
-  /* padding: 20px; */
-  /* margin: 30px; */
-    gap: 30px;  
+  gap: 30px;  
 }
 
 /* Error Page */
 
 .error-page {
-  /* text-align: center; */
   display: flex;
   justify-content: center;
   flex-direction: column;

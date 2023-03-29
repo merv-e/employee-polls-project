@@ -5,6 +5,8 @@ import {logOut} from "../actions/authedUser"
 
 const Nav = (props) => { 
   
+  /* TODO : make it responsive for different web apps....  */
+  
   const {userObject, authedUser} = props;
 
   const avatar= userObject.filter(user => user.id === authedUser)
