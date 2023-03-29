@@ -9,7 +9,7 @@ const Polls = (props) => {
   const {author, timestamp} = props.question;
   
   return (
-      <div style={{color: "white"}}>
+      <div> {/* style={{color: "white"}} */}
         <p>{author}</p>
         <p>{timestamp}</p>
         <button
