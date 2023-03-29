@@ -5,11 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.home-page {
+  margin: 0 auto;
+  /* padding: 20px; */
+}
+
+li {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Navbar */
+.navbar{
+  background-color: rgb(32, 44, 51);
+  height: 10vh;
 }
 
 .navbar ul {
@@ -19,24 +40,24 @@ code {
 }
 
 .navbar li {
+  color: white;
   font-weight: 500;
+  padding-top: 10px;
+  height: auto;
 }
 
-li {
-  list-style-type: none;
-}
-
-.center {
-  text-align: center;
-}
-
-h5 {
-  color: rgb(143, 157, 166);
+.avatar-text-align {
   display: flex;
-  position: relative;
-  flex-direction: column;
-  /* justify-content: flex-start; */
+  gap: 10px;
 }
+
+.avatar-loggedIn{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Login */
 .login-page {
   display: flex;
   flex-direction: column;
@@ -46,7 +67,7 @@ h5 {
   /* margin: 0;
   padding: 0; */
   /* width: 100vh; */
-  background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
+  /* background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%); */
 }
 
 .block-container {
@@ -62,7 +83,14 @@ h5 {
   /* padding-bottom: 20px; */
   margin-top: 5%;
   background-color: rgb(219, 241, 255);
-  /* background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(196,24,129,1) 35%, rgba(0,212,255,1) 100%); */
+}
+
+h5 {
+  color: rgb(143, 157, 166);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /* justify-content: flex-start; */
 }
 
 .login {
@@ -78,19 +106,45 @@ h5 {
   /* border-radius: 10px; */
 }
 
+/* Home */
+
+.poll-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(0deg, rgb(69, 75, 119) 35%, rgb(127, 204, 235) 100%);
+}
+
 .container {
   display: grid;
+  background-color: red;
   grid-template-columns: auto auto auto;
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 2rem;
+  border-radius: 10px;
+  background-color: rgb(219, 241, 255);
 }
 
-.home-page {
-    margin: 0 auto;
-    /* padding: 20px; */
+.p-polls-text {
+  text-align: center;
+  font-size: large;
+  display: flex;
+  align-self: center;
 }
 
+.poll-list{
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 100%;
+  font-weight: 400;
+}
+
+/* Poll */
 .poll {
   display: flex;
   flex-direction: column;
@@ -99,22 +153,8 @@ h5 {
   margin: 30px;
   gap: 20px;
   border: 1px solid #ADA8BE;
-  border-radius: 50px;
-}
-
-.poll-list{
-  border: 1px solid #C6CAED;
   border-radius: 10px;
-  padding: 10px;
-  text-align: center;
 }
-
-/* since bootstrap is installed this is not working now  */
-/* .btn {
-  border-radius: 5px;
-  background-color: #ADA8BE ;
-  border: 1px solid black;
-} */
 
 .options {
   display: grid;
@@ -127,6 +167,8 @@ h5 {
   flex-direction: column;
 }
 
+/* Leaderboard */
+
 .leaderboard-table {
   display: flex;
   flex-direction: column;
@@ -138,16 +180,12 @@ h5 {
   overflow-x:auto;
 }
 
-.avatar-login{
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
 .avatar-leaderboard {
   height: auto;
   width: 60px;
 }
+
+/* New Poll */
 
 .form-poll {
   display: flex;
@@ -157,6 +195,8 @@ h5 {
   /* margin: 30px; */
     gap: 30px;  
 }
+
+/* Error Page */
 
 .error-page {
   /* text-align: center; */

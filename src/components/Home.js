@@ -17,43 +17,37 @@ const Home = (props) => {
       return setPoll("Completed Polls")
     };
   }; 
-  //the user hasn't been voted yet, therefore the poll will be in the new polls.
-  const hasUserVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
-
   //the user has voted, so the poll will be under in the completed polls.
-  const hasUserNotVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
+  const hasUserVoted = props.questionIds.filter(q => !props.answeredQuestionIds.includes(q));
 
-  // TODO: ?  These lines and conditionally rendering options can be added.
-
-  // if (hasUserNotVoted.length === 0) {
-  //   return <p>You haven't voted for any of the polls yet. Would you like to consider checking the polls?</p>
-  // }
-  // if (hasUserVoted.length === 0 ) {
-  //   return <p>There are no new questions.</p>
-  // }
+  //the user hasn't been voted yet, therefore the poll will be in the new polls.
+  const hasUserNotVoted = props.questionIds.filter(q => props.answeredQuestionIds.includes(q));
 
   return (
-    <div className="center" > 
+    <div className="center poll-container" > 
       <h2 className="center">{poll}</h2> 
     {
        toggle
       ? ( 
         <ul className="container">
         {
-        hasUserNotVoted.map(qId => 
-            <li className="poll-list" key={qId}>
-            <Polls 
-              id={qId} 
-              />
-            </li>
-        )}
+          hasUserVoted.length === 0 
+            ? (<p className="p-polls-text">You answered all the questions.</p>)
+            : hasUserVoted.map(qId => 
+              <li className="poll-list" key={qId}>
+              <Polls 
+                id={qId} 
+                />
+              </li>
+            )}
         </ul>
-
       )
       : (
         <ul className="container">
         {
-          hasUserVoted.map(qId => 
+          hasUserNotVoted.length === 0 
+          ? <p className="p-polls-text">You haven't voted for any of the polls yet. Would you like to consider checking the polls?</p>
+          : hasUserNotVoted.map(qId => 
             <li className="poll-list" key={qId}>
               <Polls 
               id={qId} 

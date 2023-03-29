@@ -41,10 +41,12 @@ const Poll = (props) => {
     }))
   };
 
+/* NOTE: className avatar does not exist, check CSS!! */
+
   return (
     <div className="poll">
         <h1>Would you rather</h1>
-        <img src={avatarURL} alt={`Avatar of ${question.author}`} className="avatar"/>
+        <img src={avatarURL} alt={`Avatar of ${question.author}`} className="avatar"/> 
         <h3>A Poll by {question.author}</h3>
         <span><i>{name}</i></span>
         {
