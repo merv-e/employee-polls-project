@@ -4,25 +4,22 @@ import { Table } from "react-bootstrap";
 
 const Leaderboard = (props) => {
 
-  // body'deki background'u bu tablonun geri plani icin kaldir.  
-    
-  // const style = {
-    // textAlign: "center",
-    // position: "absolute",
-    // top: "50%",
-    // left: "50%",
-    // transform: "translate(-50%, -50%)",
-    // background: "white !important" ,
-  // }
+  const style = {
+      textAlign: "center",
+      position: "absolute", 
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+  };
 
   return (
       <Table 
-      // style={style}
+      style={style}
       responsive
       striped
       variant="dark" 
       size="sm"
-      className="leaderboard-table"
+      // className="leaderboard-table"
       > 
         <thead>
           <tr>
@@ -39,7 +36,7 @@ const Leaderboard = (props) => {
             <td> 
               <img className="avatar-leaderboard" src={user.avatar} alt={`Avatar of ${user.id}`} /> 
             </td>
-            <td>{user.id}</td>
+            <td className="align-left">{user.id}</td>
             <td>{user.numOfAnswers} </td>
             <td>{user.numOfQuestions} </td>
          </tr>
