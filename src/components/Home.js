@@ -27,7 +27,7 @@ const Home = (props) => {
   return (
     <div className="center poll-page">
      <div className="poll-container"> 
-      <h2 className="center">{poll}</h2> 
+      <h1 className="center">{poll}</h1> 
     {
        toggle
       ? ( 

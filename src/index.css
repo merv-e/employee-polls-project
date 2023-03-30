@@ -128,15 +128,14 @@ h5 {
   justify-content: center;
   column-gap: 2rem;
   row-gap: 2rem;
-  margin: 2rem;
   border-radius: 10px;
+  margin: 2rem;
   padding: 20px;
   font-size: 15px;
 }
 
 .p-polls-text {
   text-align: center;
-  /* font-size: large; */
   display: flex;
   align-self: center;
 }
@@ -150,26 +149,36 @@ h5 {
 }
 
 /* Poll */
+/* poll class is being used in 3 components : Home, New Poll and Polls? */
 .poll {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items:center;
-  padding: 20px;
-  margin: 30px;
+  margin-top: 10vh;
+  margin-bottom: 5rem;
   gap: 20px;
-  border: 1px solid #ADA8BE;
-  border-radius: 10px;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.options-text-username {
+  padding-bottom: 20px;
 }
 
 .options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   gap: 30px;
+  text-align: center;
 }
 
 .option {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 /* Leaderboard */
@@ -184,14 +193,15 @@ h5 {
   transform: translate(-50%, -50%);
 } */
 
-td {
-  vertical-align: middle;
-}
-
 /* when it's aligned left it doesnt look right :/  */
 /* .align-left {
   text-align: left;
 } */
+
+td {
+  vertical-align: middle;
+  /* align-items: center; */
+}
 
 .avatar-leaderboard {
   height: auto;
@@ -199,23 +209,40 @@ td {
   border-radius: 50%;
 }
 
+
 /* New Poll */
+  .new-poll-form {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 30px 50px; 
+    grid-template-areas: 
+      "fOptionText fOption fOption"
+      "sOptionText sOption sOption"
+      "new-poll-btn new-poll-btn new-poll-btn"; 
+    align-items: center;
+    margin: 2rem;
+    padding: 20px;
+  }
 
-.form-poll {
-  display: flex;
-  flex-direction: column;
-  align-items:stretch;
-  gap: 30px;  
-}
+  .fOptionText { 
+    grid-area: fOptionText; 
+  }
+  .fOption { 
+    grid-area: fOption; 
+  }
+  .sOptionText { 
+    grid-area: sOptionText; 
+  }
+  .sOption { 
+    grid-area: sOption; 
+  }
+  .new-poll-btn { 
+    grid-area: new-poll-btn; 
+  }
 
-td {
-  /* display: flex; */
-  /* justify-content: center; */
-  align-items: center;
-}
 
 /* Error Page */
-
 .error-page {
   display: flex;
   justify-content: center;

@@ -48,7 +48,7 @@ const Poll = (props) => {
         <h1>Would you rather</h1>
         <img src={avatarURL} alt={`Avatar of ${question.author}`} className="avatar"/> 
         <h3>A Poll by {question.author}</h3>
-        <span><i>{name}</i></span>
+        <span className="options-text-username"><i>{name}</i></span>
         {
           votesForOptionOne.includes(authedUser) || votesForOptionTwo.includes(authedUser)
           ? (

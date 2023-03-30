@@ -26,11 +26,16 @@ const NewPoll = (props) => {
     };
 
   return (
-    <div className="form-poll">
-        <h2>Would you rather</h2>
-        <form className="form-poll" onSubmit={handleSubmit}>
-          <label htmlFor="fOption">First Option</label>
-          <input
+    <div className="poll">
+        <h1>Would you rather ...</h1>
+        <form className="new-poll-form" onSubmit={handleSubmit}>
+          <label 
+           className="fOptionText"
+           htmlFor="fOption"
+           >First Option
+          </label>
+          <input 
+           className="fOption"
            name="fOption" 
            value={firstOption}
            onChange={(ev) => setFirstOption(ev.target.value)}
@@ -38,9 +43,13 @@ const NewPoll = (props) => {
            placeholder="Please write down your first option"
            />
           
-          <label htmlFor="secOption">
-          Second Option</label>
-          <input 
+          <label
+           className="sOptionText" 
+           htmlFor="secOption"
+           >Second Option
+          </label>
+          <input
+           className="sOption"
            name="secOption" 
            value={secondOption}
            data-testid="second-option-input"
@@ -50,7 +59,7 @@ const NewPoll = (props) => {
           <button
            data-testid = "submitBtn"
            type="submit" 
-           className="btn" 
+           className="btn btn-secondary new-poll-btn" 
            onClick={handleSubmit} 
            disabled=
            {
