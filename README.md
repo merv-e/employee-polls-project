@@ -31,4 +31,4 @@ or
 
 #### Sources of the images:
 
-- [avatars for this project]( https://www.freepik.com/free-vector/hand-drawn-people-avatar-collection_5183184.htm#query=avatar&position=19&from_view=keyword )
+- [avatars used for this project]( https://www.freepik.com/free-vector/hand-drawn-people-avatar-collection_5183184.htm#query=avatar&position=19&from_view=keyword )
