@@ -1,6 +1,6 @@
 # Employee Poll Project
 
-* In this project, you can use the user passwords and username to login. 
+* In this project, you can choose the username to login. 
 * After logged in, the app allows you to create new polls as well as voting for polls that are already created. 
 * You can also check the leaderboard to see which user answered/created the polls more. 
 
@@ -28,6 +28,8 @@ In order to run the project:
 or
 
 `npm run test`
+
+- Important note: Some of the tests won't be used due to the change of the app. This issue will be solved.
 
 #### Sources of the images:
 
