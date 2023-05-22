@@ -153,7 +153,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author, //bu degisik!
+    author,
     optionOne: {
       votes: [],
       text: optionOneText,
