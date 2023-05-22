@@ -34,3 +34,7 @@ or
 #### Sources of the images:
 
 - [avatars used for this project]( https://www.freepik.com/free-vector/hand-drawn-people-avatar-collection_5183184.htm#query=avatar&position=19&from_view=keyword )
+
+
+#### Technologies used: 
+``` JS, React, Redux ```
