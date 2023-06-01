@@ -16,20 +16,16 @@ npm i
 ## How to run the project 
 
 In order to run the project:
-
- ```
- npm start
- ```
+ `npm start`
 
 ### To test the project
-<!-- ``` -->
 `npm test` || `npm t`
 
 or
 
 `npm run test`
 
-- Important note: Some of the tests won't be used due to the change of the app. This issue will be solved.
+- Important note: Some of the tests are not working due to the change of the app. This issue will be solved.
 
 #### Sources of the images:
 
