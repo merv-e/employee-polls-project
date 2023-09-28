@@ -35,4 +35,4 @@ or
 
 
 #### Technologies used: 
-``` JS, React, Redux ```
+``` HTML, CSS, Bootstrap, React, Redux, Jest ```
