@@ -5,6 +5,8 @@ import {logOut} from "../actions/authedUser"
 
 const Nav = (props) => { 
   
+  /* TODO : make it responsive for different web apps....  */
+  
   const {userObject, authedUser} = props;
 
   const avatar= userObject.filter(user => user.id === authedUser)
@@ -12,7 +14,7 @@ const Nav = (props) => {
 
   const style = {
       textDecoration: 'none',
-      color: "black",
+      color: "white",
   };
 
   const handleLogout = ({dispatch}) => {
@@ -44,19 +46,21 @@ const Nav = (props) => {
         </li>
       </ul>
 
-    <div style={{paddingRight: "10px"}}>
-      <ul>
-        <li>
-          <p>{authedUser}</p>
-        </li>
-        <li>
-          <Link 
-          to="/login" 
-          style={style}
-          onClick={handleLogout}>Logout</Link>
-        </li>
-      </ul>
-  </div>  
+      <div style={{paddingRight: "10px"}}>
+        <ul>
+          <li className="avatar-text-align">
+          <img className="avatar-loggedIn" src={avatar} alt={`Avatar of ${authedUser}`}/>
+            <p>{authedUser}</p>
+          </li>
+          <li>
+            <Link 
+            to="/login" 
+            style={style}
+            onClick={handleLogout}>Logout</Link>
+          </li>
+        </ul>
+      </div>  
+    
     </div>
         )
       }
@@ -78,5 +82,3 @@ const mapStateToProps = ({authedUser, users}) => {
 
 export default connect(mapStateToProps)(Nav);
 
-
-// {/* <img className="avatar-login" src={avatar} alt={`Avatar of ${authedUser}`}/> */}

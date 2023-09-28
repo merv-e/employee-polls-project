@@ -1,13 +1,27 @@
 import { connect } from "react-redux";
 import { Table } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 const Leaderboard = (props) => {
 
+  const style = {
+      textAlign: "center",
+      position: "absolute", 
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+  };
+
   return (
-    <div className="leaderboard-table" >
-      <Table responsive> 
-        <thead style={{textAlign: "center"}}>
+      <Table 
+      style={style}
+      responsive
+      striped
+      variant="dark" 
+      size="sm"
+      // className="leaderboard-table"
+      > 
+        <thead>
           <tr>
             <th>Avatar</th>
             <th>Username</th>
@@ -15,14 +29,14 @@ const Leaderboard = (props) => {
             <th>Created Polls</th>
           </tr>
         </thead>
-         <tbody className="center">
+         <tbody>
         {
-        props.userInfo.map( user =>
+        props.userInfo.map(user =>
          <tr key={user.id}>
             <td> 
               <img className="avatar-leaderboard" src={user.avatar} alt={`Avatar of ${user.id}`} /> 
             </td>
-            <td>{user.id}</td>
+            <td className="align-left">{user.id}</td>
             <td>{user.numOfAnswers} </td>
             <td>{user.numOfQuestions} </td>
          </tr>
@@ -30,7 +44,6 @@ const Leaderboard = (props) => {
         }
          </tbody>
       </Table>
-    </div>
   )
 };
 

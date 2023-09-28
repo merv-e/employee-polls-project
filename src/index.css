@@ -5,11 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: linear-gradient(0deg, rgb(69, 75, 119) 0%, rgb(127, 204, 235) 100%);
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* The className of the div in App.js */
+.home-page {
+  margin: 0 auto;
+  /* padding: 20px; */
+}
+
+
+/* Effective throughout the app */
+
+li {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Navbar */
+
+/* Todo : navbar can be made in a fixed position? */
+.navbar{
+  background-color: rgb(32, 44, 51);
+  height: auto;
+  /* position: fixed;
+  overflow: hidden; */
 }
 
 .navbar ul {
@@ -19,122 +50,204 @@ code {
 }
 
 .navbar li {
+  color: white;
   font-weight: 500;
+  padding-top: 10px;
+  /* height: 30vh; */
+  font-size: 15px;
 }
 
-li {
-  list-style-type: none;
-}
-
-.center {
-  text-align: center;
-}
-
-.login-page {
+.avatar-text-align {
   display: flex;
-  flex-direction: column;
-  align-items:center;
+  gap: 10px;
 }
 
-.loginImg {
-  height: auto;
-  max-width: 400px;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: inherit;
-  padding: 50px;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 2rem;
-  row-gap: 2rem;
-  margin: 2rem;
-}
-
-.home-page {
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.poll {
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  padding: 20px;
-  margin: 30px;
-  gap: 20px;
-  border: 1px solid #ADA8BE;
-  border-radius: 50px;
-}
-
-.poll-list{
-  border: 1px solid #C6CAED;
-  border-radius: 30px;
-  padding: 10px;
-  text-align: center;
-}
-
-/* since bootstrap is installed this is not working now  */
-/* .btn {
-  border-radius: 5px;
-  background-color: #ADA8BE ;
-  border: 1px solid black;
-} */
-
-.options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.option {
-  display: flex;
-  flex-direction: column;
-}
-
-.leaderboard-table {
-  display: flex;
-  flex-direction: column;
-  /* align-items:center; */
-  justify-content: space-between;
-  padding: 20px;
-  margin: 30px;
-  gap: 30px;  
-  overflow-x:auto;
-}
-
-.avatar-login{
+.avatar-loggedIn{
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
 
+/* Login */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  height: 100vh;
+}
+
+.block-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px;
+  border-radius: 10px;
+  height : 40vh;
+  width: 40vh;
+  /* transform: translate(50px, 50px); */
+  /* padding-bottom: 20px; */
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: rgb(219, 241, 255);
+}
+
+h5 {
+  color: rgb(143, 157, 166);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center; 
+  /* padding: 10px; */
+  margin-bottom: 10px;
+}
+
+/* Home */
+.poll-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  margin-bottom: 5rem;
+}
+
+.poll-container {
+  border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 80%;
+  padding-bottom: 20px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 40% 40%; 
+  justify-content: center;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 20px;
+  font-size: 15px;
+}
+
+.p-polls-text {
+  text-align: center;
+  display: flex;
+  align-self: center;
+}
+
+.poll-list{
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 400;
+  background-color: #ADA8BE;
+}
+
+/* Poll */
+/* poll class is being used in 3 components : Home, New Poll and Polls? */
+.poll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin-top: 10vh;
+  margin-bottom: 5rem;
+  gap: 20px;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.options-text-username {
+  padding-bottom: 20px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 30px;
+  text-align: center;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* Leaderboard */
+
+/* NOTE!! Instead of the one right below, style attribute of React is being used. (Leaderboard component) */
+
+/* .leaderboard-table {
+  text-align: center;
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* when it's aligned left it doesnt look right :/  */
+/* .align-left {
+  text-align: left;
+} */
+
+td {
+  vertical-align: middle;
+  /* align-items: center; */
+}
+
 .avatar-leaderboard {
   height: auto;
   width: 60px;
+  border-radius: 50%;
 }
 
-.form-poll {
-  display: flex;
-  flex-direction: column;
-  align-items:stretch;
-  /* padding: 20px; */
-  /* margin: 30px; */
-    gap: 30px;  
-}
 
+/* New Poll */
+  .new-poll-form {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 30px 50px; 
+    grid-template-areas: 
+      "fOptionText fOption fOption"
+      "sOptionText sOption sOption"
+      "new-poll-btn new-poll-btn new-poll-btn"; 
+    align-items: center;
+    margin: 2rem;
+    padding: 20px;
+  }
+
+  .fOptionText { 
+    grid-area: fOptionText; 
+  }
+  .fOption { 
+    grid-area: fOption; 
+  }
+  .sOptionText { 
+    grid-area: sOptionText; 
+  }
+  .sOption { 
+    grid-area: sOption; 
+  }
+  .new-poll-btn { 
+    grid-area: new-poll-btn; 
+  }
+
+
+/* Error Page */
 .error-page {
-  /* text-align: center; */
   display: flex;
   justify-content: center;
   flex-direction: column;

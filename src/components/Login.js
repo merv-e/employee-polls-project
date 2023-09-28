@@ -1,76 +1,86 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate, useRoutes } from "react-router-dom";
-import loginImg from "../images/employee-poll.png";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {setAuthedUser} from "../actions/authedUser"
 import { withRouter } from "../utils/helpers";
-import Home from "./Home";
-import Leaderboard from "./Leaderboard";
-import NewPoll from "./NewPoll";
+import { Button } from "react-bootstrap";
 
 const Login = (props) => {
   
   const navigate = useNavigate();
   const {dispatch} = props;
   const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const authentification = props.userInfo.filter(u => u.id === username && u.password === password).map(u => u.id);
   
-  const user = authentification.find(user => user);
+  const options = [
+    {value: "", text: "User"},
+    {value: "zoshikanlu", text: "zoshikanlu"},
+    {value: "tylermcginnis", text: "tylermcginnis"},
+    {value: "mtsamis", text: "mtsamis"},
+    {value: "sarahedo", text: "sarahedo"},
+  ];
 
   //if the pathname is /login redirect to the homepage
   if (props.path === "/login") {
     navigate("/");
   }
   
-  const handleSubmit = (e) => { 
-    e.preventDefault();
+  const handleSubmit = event => { 
+    event.preventDefault();
     dispatch(showLoading()); 
     
-    if (user) {
+    const user = username;  
+
+    if (user !== "") {
       dispatch(setAuthedUser(username));
     }
 
-    else alert("Incorrect password or username");
-
     setUserName("");
-    setPassword("");
   
   dispatch(hideLoading());
   };
 
   return (
-    <div className="login-page">
-      <img
-       data-testid="login-avatar"
-       className="loginImg" 
-       src={loginImg} 
-       alt="Employee polls"
-       />
-     <form 
-       className="login" 
-       onSubmit={handleSubmit} >
-        <input 
-         value={username}
-         data-testid="login-name"
-         placeholder="username" type="text"
-         onChange={(event) => setUserName(event.target.value)}/>
-       <input
-        data-testid="login-password"
-        value={password} 
-        placeholder="password" 
-        type="text"
-        onChange={(event) => setPassword(event.target.value)}/>
-        <button
-         data-testid="login-submit"
-         type="submit" 
-         disabled={
-          username === "" || password === ""
-         }
-        >Login
-        </button>
-      </form>
+    <div 
+    className="login-page"
+    >
+    <div 
+     className="block-container">
+      <form 
+       onSubmit={handleSubmit}
+      //  className="login"
+      >
+      <h5 className="center">Select user</h5>
+          <select 
+           value={username}
+          //  className="login" 
+          className="btn btn-secondary btn-block login center" //
+          //  className="d-grid gap-4"
+           onChange={
+            (event) => setUserName(event.target.value)} 
+           >
+           {
+            options.map(o => 
+              <option
+                disabled= {o.value === ""} 
+                key={o.value} 
+                value={o.value}
+                >{o.text}
+              </option>
+             )}
+          </select>
+
+        <div className="d-grid gap-2">
+          <Button 
+          //  className="btn btn-secondary center "
+           variant="secondary"
+           size="block"
+           type="submit"
+           >Submit
+          </Button>
+        </div>
+      </form> 
+    </div>
     </div>
   )
 };
@@ -80,15 +90,14 @@ const Login = (props) => {
     const userInfo = Object.values(users)
     .map(u => ({
       id: u.id,
-      password: u.password
     }));
 
-const path = props.router.location.pathname.replace("/question/", "");
+    const path = props.router.location.pathname.replace("/question/", "");
 
     return {
       userInfo,
       questionIds : Object.values(questions).map((q) => q.id),
-      path
+      path,
     };
 };
 
